@@ -62,7 +62,7 @@ function ModuleForm({ onSubmit, initialValues, disabled }) {
           block
           style={{ background: "#9a2119", borderColor: "#9a2119" }}
         >
-          Submit
+          Create
         </Button>
       )}
     </Form>
