@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   🎨 CAREER MAP — THEME TOKENS
+   Change colors HERE only — everything updates automatically.
+   Logo palette: Deep Red #9B1C1C / #C0392B  +  White #FFFFFF
+   ============================================================ */
+:root {
+  /* --- Brand --- */
+  --brand-primary:       #C0392B;          /* main red            */
+  --brand-primary-dark:  #9B1C1C;          /* deep/dark red       */
+  --brand-primary-light: #E05444;          /* lighter red         */
+  --brand-accent:        #FF6B5B;          /* hover / bright red  */
+
+  /* --- Backgrounds --- */
+  --bg-base:             #0C0808;          /* page background     */
+  --bg-surface:          #130D0D;          /* sidebar surface     */
+  --bg-elevated:         #1C1212;          /* elevated cards      */
+  --bg-hover:            #241616;          /* hover state         */
+
+  /* --- Borders --- */
+  --bg-border:           rgba(192, 57, 43, 0.12);   /* subtle border   */
+  --bg-border-strong:    rgba(192, 57, 43, 0.28);   /* emphasis border  */
+
+  /* --- Text --- */
+  --text-primary:        #000;
+  --text-secondary:      #D1C5C5;          /* warm off-white      */
+  --text-muted:          #7A6060;          /* muted warm gray     */
+  --text-hint:           #4A3535;          /* very muted          */
+
+  /* --- Glow / FX --- */
+  --glow-primary:        rgba(192, 57, 43, 0.35);
+  --glow-soft:           rgba(192, 57, 43, 0.12);
+
+  /* --- Semantic (keep accessible) --- */
+  --color-success:       #22C55E;
+  --color-warning:       #F59E0B;
+  --color-info:          #60A5FA;
+  --color-danger:        #F87171;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+@layer base {
+  * { box-sizing: border-box; }
+
+  body {
+    background-color: #fff;
+    color: var(--text-primary);
+    font-family: "DM Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::-webkit-scrollbar              { width: 4px; }
+  ::-webkit-scrollbar-track        { background: transparent; }
+  ::-webkit-scrollbar-thumb        { background: rgba(192, 57, 43, 0.25); border-radius: 10px; }
+  ::-webkit-scrollbar-thumb:hover  { background: rgba(192, 57, 43, 0.50); }
+}
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+@layer utilities {
+  .font-display { font-family: "DM Sans", sans-serif; }
+  .font-body    { font-family: "DM Sans", sans-serif; }
+
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Reusable card surfaces */
+  .card-base {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid var(--bg-border);
+    border-radius: 16px;
+  }
+  .card-accent {
+    background: rgba(192, 57, 43, 0.08);
+    border: 1px solid var(--bg-border-strong);
+    border-radius: 16px;
+  }
+
+  /* Brand button */
+  .btn-brand {
+    background: var(--brand-primary);
+    color: #fff;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: background 0.2s, box-shadow 0.2s;
+  }
+  .btn-brand:hover {
+    background: var(--brand-accent);
+    box-shadow: 0 0 18px var(--glow-primary);
+  }
+
+  /* Active nav glow bar */
+  .nav-glow {
+    box-shadow: 0 0 8px 2px var(--glow-primary);
+  }
+}
+
+/* ============================================================
+   ATMOSPHERIC BACKGROUND FX
+   ============================================================ */
+
+/* Subtle red-tinted grid */
+body::before {
+  content: "";
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(192, 57, 43, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(192, 57, 43, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Radial red glow top-left */
+body::after {
+  content: "";
+  position: fixed; top: -180px; left: 80px;
+  width: 560px; height: 560px;
+  background: radial-gradient(circle, rgba(192, 57, 43, 0.07) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root { position: relative; z-index: 1; }
