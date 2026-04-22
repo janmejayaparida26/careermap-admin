@@ -5,7 +5,7 @@ const MentorPage = () => {
     <div>MentorPage
 
 
-        <h1>this is the mentor page</h1>
+        <h2>this is the mentor page</h2>
     </div>
   )
 }
