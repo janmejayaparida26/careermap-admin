@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "antd/dist/reset.css";
 import Sidebar from "./components/layout/Sidebar";
 import Header  from "./components/layout/Header";
 import DashboardPage from "./pages/DashboardPage";
