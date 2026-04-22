@@ -19,7 +19,7 @@ function MentorForm({ onSubmit, initialValues, disabled }) {
     <Form layout="vertical" form={form} onFinish={onSubmit}>
       
       {/* GRID 3 COLUMNS */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
 
         {/* Category */}
         <Form.Item name="category" label="Category" rules={[{ required: true }]}>
