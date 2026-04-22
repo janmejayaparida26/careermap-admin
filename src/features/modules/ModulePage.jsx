@@ -5,9 +5,9 @@ import ModuleTable from "./ModuleTable";
 
 const initialData = [
   {
-    title: "React Basics",
-    btnText: "Start Now",
-    url: "https://example.com",
+    title: "Career Library",
+    btnText: "Explore Now",
+    url: "career_library/stream",
     image: "https://via.placeholder.com/100",
     position: "Top",
     isFree: true,
