@@ -6,6 +6,7 @@ import ModulePage from "../features/modules/ModulePage";
 import StreamPage from "../features/stream/StreamPage";
 import CategoryPage from "../features/categories/CategoryPage";
 import Category2Page from "../features/2ndcategories/Category2Page";
+import SubCategoryPage from "../features/subcategories/SubCategoryPage";
 
 export const router = createBrowserRouter([
   {
@@ -18,7 +19,8 @@ export const router = createBrowserRouter([
       {path:"module",element:<ModulePage/>},
       {path:"stream",element:<StreamPage/>},
       {path:"categories",element:<CategoryPage/>},
-      {path:"2ndcategories",element:<Category2Page/>}
+      {path:"2ndcategories",element:<Category2Page/>},
+      {path:"subcategories",element:<SubCategoryPage/>}
     ],
   },
 ]);
