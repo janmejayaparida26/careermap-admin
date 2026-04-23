@@ -34,7 +34,7 @@ export default function Category2Table({
         <img
           src={img}
           alt=""
-          className="w-12 h-12 rounded-md object-cover"
+          className="w-12 h-12 rounded-full object-cover"
         />
       ),
     },
