@@ -73,10 +73,11 @@ function SubCategoryForm({ onSubmit, initialValues, viewMode }) {
         <div className="col-span-2 text-right">
           <Button
             htmlType="submit"
+            block
             style={{ background: "#9a2119", borderColor: "#9a2119" }}
             className="text-white"
           >
-            Submit
+            Create
           </Button>
         </div>
       )}
