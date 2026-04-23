@@ -11,6 +11,9 @@ const navSections = [
   { label: "USERS",      items: [{ icon: GraduationCap, name: "Mentors", path:"/mentor" }, { icon: Users, name: "All Users", path:"/all_users" }] },
   { label: "CONTENT",    items: [{ icon: BookOpen, name: "Modules" }, { icon: Layers, name: "Stream" }, { icon: Tag, name: "Categories" }, { icon: Tags, name: "2nd Categories" }, { icon: Tags, name: "Subcategories" }] },
   { label: "CAREER",     items: [{ icon: DollarSign, name: "Salary Range" }, { icon: Briefcase, name: "Job Scope" }, { icon: GitBranch, name: "Path Type" }, { icon: MapPin, name: "Career Path" }, { icon: ClipboardList, name: "Entrance Exam" }, { icon: Building2, name: "Institution" }, { icon: Video, name: "Master Class" }, { icon: Award, name: "Scholarship" }] },
+  { label: "USERS",      items: [{ icon: GraduationCap, name: "Mentors", path:"/mentor" }, { icon: Users, name: "All Users" }] },
+  { label: "CONTENT",    items: [{ icon: BookOpen, name: "Modules", path:"/module" }, { icon: Layers, name: "Stream", path:"/stream" }, { icon: Tag, name: "Categories", path:"/categories" }, { icon: Tags, name: "2nd Categories", path:"/2ndcategories" }, { icon: Tags, name: "Subcategories", path:"/subcategories" }] },
+  { label: "CAREER",     items: [{ icon: DollarSign, name: "Salary Range", path:"/salary" }, { icon: Briefcase, name: "Job Scope", path:"/jobscope" }, { icon: GitBranch, name: "Path Type" }, { icon: MapPin, name: "Career Path" }, { icon: ClipboardList, name: "Entrance Exam" }, { icon: Building2, name: "Institution" }, { icon: Video, name: "Master Class" }, { icon: Award, name: "Scholarship" }] },
   { label: "MANAGEMENT", items: [{ icon: Image, name: "Banner Slider" }, { icon: MapPin, name: "Career Plan" }, { icon: Bell, name: "Subscribers" }, { icon: CalendarCheck, name: "Bookings" }, { icon: CreditCard, name: "Plans" }, { icon: HelpCircle, name: "Quiz" }, { icon: Repeat, name: "Subscriptions" }, { icon: Wrench, name: "Services" }] },
 ];
 
