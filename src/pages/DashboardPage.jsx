@@ -22,7 +22,7 @@ const ACCENT        = "#e8c5c2";
 
 const statCards = [
   { label: "Total Deposited",  value: "Rs0.00", icon: "💰", grad: "linear-gradient(135deg,#3d0a07 0%,#6b1510 100%)" },
-  { label: "Deposited Charge", value: "Rs0.00", icon: "%",  grad: "linear-gradient(135deg,#7a1a13 0%,#9a2119 60%,#b03030 100%)" },
+  { label: "Deposited Charge", value: "Rs0.00", icon: "💸",  grad: "linear-gradient(135deg,#7a1a13 0%,#9a2119 60%,#b03030 100%)" },
   { label: "Total Plan",       value: "1",      icon: "🎁", grad: "linear-gradient(135deg,#9a2119 0%,#c4392e 100%)"},
   { label: "Total Services",   value: "6",      icon: "🚀", grad: "linear-gradient(135deg,#b5420d 0%,#e8793a 100%)" },
 ];
@@ -66,7 +66,7 @@ const emptyChartData = {
 
 /* ── Orders: red/crimson shades only ── */
 const orderValues = { total: 24, approved: 14, pending: 7, rejected: 3 };
-const ORDER_COLORS = { approved: "#5c0a07", pending: "#9a2119", rejected: "#d4614f" };
+const ORDER_COLORS = { approved: "#9a2119", pending: "#c4392e", rejected: "#d4614f" };
 
 const donutData = {
   labels: ["Approved", "Pending", "Rejected"],
