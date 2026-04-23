@@ -9,16 +9,16 @@ const initialData = [
     category: "Medical",
     secondCategory: "GENERAL COURSES/DEGREES",
     title: "MBBS",
-    institutions: "AIIMS DELHI, AIIMS BHUBANESWAR...",
-    description: "The MBBS (Bachelor of Medicine and...)",
+    institutions: "AIIMS DELHI, AIIMS BHOPAL, AIIMS BHUBANESWAR, SCB Medical College, Maharaja Krushna Chandra Gajapati Medical College, Veer Surendra Sai Institute of Medical Sciences and Research, Saheed laxman nayak medical college and hospital, Post Graduate Institute of Medical &amp; Research (PGIMER), Chandigarh, Jawaharlal Institute of Postgraduate Medical Education &amp; Research (JIPMER), Puducherry, National Institute of Mental Health and Neuro Sciences, Kalinga Institute of Medical Sciences, Hi-Tech Medical College &amp; Hospital, Siksha ‘O’ Anusandhan (SUM Hospital), CMC, Vellore, KMC, Manipal, Amrita Vishwam Vidyapeetham",
+    description: "The MBBS (Bachelor of Medicine and Bachelor of Surgery) is the core undergraduate degree for aspiring doctors in India. It spans 5.5 years - 4.5 years of academic study followed by a one-year compulsory rotating internship. The course offers comprehensive training in medical disciplines including anatomy, physiology, pharmacology, pathology, surgery, and clinical medicine, ensuring both theoretical knowledge and hands-on clinical experience. An MBBS degree enables graduates to practice as general physicians, pursue postgraduate specializations (MD/MS), or move into fields such as medical research, public health, and healthcare administration. It remains one of the most respected and demanding professional courses, marked by rigorous study and a strong commitment to human service.",
   },
   {
     id: 2,
     category: "Medical",
     secondCategory: "GENERAL COURSES/DEGREES",
     title: "BDS",
-    institutions: "Manipal Dental College...",
-    description: "The BDS (Bachelor of Dental Surgery...)",
+    institutions: "Saveetha institute of medical and technical sciences, Manipal College of Dental Sciences, Maulana Azad Institute Of Dental Sciences (MAIDS), King George&#039;s Medical University, Dr. D. Y. Patil Vidyapeeth, Pimpri, Pune, SCB Dental College, Cuttack, Hi-Tech Dental College &amp; Hospital, Institute of Dental Sciences, Kalinga Institute of Dental Sciences (KIDS)",
+    description: "The BDS (Bachelor of Dental Surgery) is the primary undergraduate degree for aspiring dental professionals in India. It spans 5 years, including 4 years of academic study and 1 year of compulsory internship, with comprehensive training in dental sciences and clinical practice. Students learn different specializations like dental anatomy, oral pathology, prosthodontics, periodontics, orthodontics, and oral surgery. A BDS degree allows graduates to practice as dental surgeons, pursue MDS (Master of Dental Surgery) for specialization, or explore fields such as dental research, public health, and academia. It is considered a prestigious and demanding course, blending scientific expertise with dedicated patient care in oral health.",
   },
 ];
 
