@@ -67,10 +67,10 @@ function JobScopePage() {
   };
 
   return (
-    <div className="p-6 w-full">
+    <div className="w-full">
       
       {/* Title */}
-      <h1 className="text-2xl font-semibold text-[#9a2119] mb-4">
+      <h1 className="text-xl font-semibold text-[#9a2119] mb-4">
         Job Scope Management
       </h1>
 
