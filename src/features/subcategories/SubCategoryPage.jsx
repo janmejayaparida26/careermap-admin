@@ -45,39 +45,51 @@ function SubCategoryPage() {
   };
 
   return (
-    <div className="p-5">
-      <h2 className="text-xl font-semibold text-[#9a2119] mb-4">
+    <div className="w-full"> {/* ✅ FIXED ALIGNMENT */}
+
+      {/* Page Title */}
+      <h2 className="text-xl font-semibold text-[#9a2119] mb-5">
         SubCategory Management
       </h2>
 
-      <SubCategoryTable
-        data={data}
-        search={search}
-        setSearch={setSearch}
-        onAdd={() => {
-          setEditData(null);
-          setViewMode(false);
-          setOpen(true);
-        }}
-        onView={(row) => {
-          setEditData(row);
-          setViewMode(true);
-          setOpen(true);
-        }}
-        onEdit={(row) => {
-          setEditData(row);
-          setViewMode(false);
-          setOpen(true);
-        }}
-        onDelete={handleDelete}
-      />
+      {/* Table Section */}
+      <div className="w-full">
+        <SubCategoryTable
+          data={data}
+          search={search}
+          setSearch={setSearch}
+          onAdd={() => {
+            setEditData(null);
+            setViewMode(false);
+            setOpen(true);
+          }}
+          onView={(row) => {
+            setEditData(row);
+            setViewMode(true);
+            setOpen(true);
+          }}
+          onEdit={(row) => {
+            setEditData(row);
+            setViewMode(false);
+            setOpen(true);
+          }}
+          onDelete={handleDelete}
+        />
+      </div>
 
+      {/* Modal */}
       <Modal
         open={open}
         onCancel={() => setOpen(false)}
         footer={null}
         width={1000}
-        title={viewMode ? "View SubCategory" : editData ? "Edit SubCategory" : "Add SubCategory"}
+        title={
+          viewMode
+            ? "View SubCategory"
+            : editData
+            ? "Edit SubCategory"
+            : "Add SubCategory"
+        }
       >
         <SubCategoryForm
           onSubmit={handleSubmit}
