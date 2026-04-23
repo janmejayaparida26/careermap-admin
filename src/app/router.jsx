@@ -8,6 +8,7 @@ import CategoryPage from "../features/categories/CategoryPage";
 import Category2Page from "../features/2ndcategories/Category2Page";
 import SubCategoryPage from "../features/subcategories/SubCategoryPage";
 import SalaryPage from "../features/salary/SalaryPage";
+import JobScopePage from "../features/jobscope/JobScopePage";
 
 export const router = createBrowserRouter([
   {
@@ -22,7 +23,8 @@ export const router = createBrowserRouter([
       {path:"categories",element:<CategoryPage/>},
       {path:"2ndcategories",element:<Category2Page/>},
       {path:"subcategories",element:<SubCategoryPage/>},
-      {path:"salary",element:<SalaryPage/>}
+      {path:"salary",element:<SalaryPage/>},
+      {path:"jobscope",element:<JobScopePage/>}
     ],
   },
 ]);
