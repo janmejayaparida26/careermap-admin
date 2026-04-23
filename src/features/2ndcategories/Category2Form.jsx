@@ -48,9 +48,9 @@ export default function Category2Form({ onSubmit, initialValues, mode }) {
         <Button
           htmlType="submit"
           block
-          style={{ background: "#9a2119", borderColor: "#9a2119", color: "#fff" }}
+          style={{ background: "#9a2119", borderColor: "#9a2119" }}
         >
-          Create
+          Submit
         </Button>
       )}
     </Form>

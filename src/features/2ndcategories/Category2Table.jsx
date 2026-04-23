@@ -1,6 +1,11 @@
 import React from "react";
-import { Table, Button, Space } from "antd";
-import { EyeOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import { Table, Button, Space, Input } from "antd";
+import {
+  EyeOutlined,
+  EditOutlined,
+  DeleteOutlined,
+  SearchOutlined,
+} from "@ant-design/icons";
 
 export default function Category2Table({
   data,
@@ -8,6 +13,8 @@ export default function Category2Table({
   onEdit,
   onView,
   onDelete,
+  search,
+  setSearch,
 }) {
   const columns = [
     {
@@ -34,7 +41,7 @@ export default function Category2Table({
         <img
           src={img}
           alt=""
-          className="w-12 h-12 rounded-full object-cover"
+          className="w-12 h-12 rounded-md object-cover"
         />
       ),
     },
@@ -56,18 +63,34 @@ export default function Category2Table({
 
   return (
     <div className="bg-white p-5 rounded-2xl shadow border">
-      <div className="flex justify-between mb-4">
+      
+      {/* HEADER */}
+      <div className="flex justify-between items-center mb-4 flex-wrap gap-3">
+        
         <h2 className="text-lg font-semibold text-[#9a2119]">
           Category List
         </h2>
 
-        <Button
-          type="primary"
-          onClick={onAdd}
-          style={{ background: "#9a2119", borderColor: "#9a2119" }}
-        >
-          + Add Category
-        </Button>
+        <div className="flex gap-2 items-center">
+          
+          {/* 🔍 SEARCH */}
+          <Input
+            placeholder="Search category..."
+            prefix={<SearchOutlined />}
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-64"
+          />
+
+          {/* ➕ ADD BUTTON */}
+          <Button
+            type="primary"
+            onClick={onAdd}
+            style={{ background: "#9a2119", borderColor: "#9a2119" }}
+          >
+            + Add Category
+          </Button>
+        </div>
       </div>
 
       <Table columns={columns} dataSource={data} rowKey="id" />
