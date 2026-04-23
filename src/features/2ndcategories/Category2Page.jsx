@@ -9,21 +9,21 @@ const initialData = [
     category: "Medical",
     name: "GENERAL COURSES/DEGREES",
     description: "",
-    image: "https://via.placeholder.com/60",
+    image: "https://randomuser.me/api/portraits/men/32.jpg",
   },
   {
     id: 2,
     category: "Medical",
     name: "ALLIED & PARA MEDICAL COURSES/DEGREES",
     description: "",
-    image: "https://via.placeholder.com/60",
+    image: "https://randomuser.me/api/portraits/women/44.jpg",
   },
   {
     id: 3,
     category: "Architecture & Planning",
     name: "Architecture",
-    description: "Architecture is a multidisciplinary field...",
-    image: "https://via.placeholder.com/60",
+    description: "Architecture is a multidisciplinary field combining art, design, technology, and sustainability to create functional, safe, and visually appealing buildings and spaces. A bachelor’s degree typically spans 5 years, covering design studios, architectural history, building technology, CAD, model-making, and real-world projects. Admission in India is competitive, usually via NATA or JEE Paper 2. Graduates can work in architectural firms, urban planning, interior and landscape design, construction management, sustainable design, and heritage conservation. The profession requires creativity, spatial awareness, problem-solving, and technical expertise, making architects vital contributors to modern infrastructure, cultural identity, and sustainable urban development.",
+    image: "https://randomuser.me/api/portraits/men/32.jpg",
   },
 ];
 
