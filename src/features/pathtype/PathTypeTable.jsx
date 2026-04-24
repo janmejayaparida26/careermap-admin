@@ -45,9 +45,16 @@ export default function PathTypeTable({
       dataIndex: "title",
     },
     {
-      title: <span className="text-[#9a2119] font-semibold">Action</span>,
+      title: (
+        <span className="text-[#9a2119] font-semibold text-right block">
+          Action
+        </span>
+      ),
+      key: "action",
+      align: "right", // ✅ Important
+      width: 180,
       render: (_, record) => (
-        <div className="flex gap-2">
+        <div className="flex justify-end gap-2 pr-2">
           {/* View */}
           <button
             onClick={() => onView(record)}
@@ -144,6 +151,7 @@ export default function PathTypeTable({
         dataSource={filteredData}
         pagination={{ pageSize: 5 }}
         rowClassName="hover:bg-gray-50"
+        className="[&_.ant-table-cell]:align-middle"
       />
     </div>
   );
