@@ -14,6 +14,7 @@ import PathTypePage from "../features/pathtype/PathTypePage";
 import CareerPathPage from "../features/careerpath/CareerPathPage";
 import EntranceExamPage from "../features/entranceexam/EntranceExamPage";
 import InstitutionPage from "../features/institution/InstitutionPage";
+import ScholarshipPage from "../features/scholarship/ScholarshipPage";
 
 export const router = createBrowserRouter([
   {
@@ -36,7 +37,8 @@ export const router = createBrowserRouter([
       {path:"pathtype",element:<PathTypePage/>},
       {path:"careerpath",element:<CareerPathPage/>},
       {path:"entranceexam",element:<EntranceExamPage/>},
-      {path:"institution",element:<InstitutionPage/>}
+      {path:"institution",element:<InstitutionPage/>},
+      {path:"scholarship",element:<ScholarshipPage/>}
     ],
   },
 ]);
