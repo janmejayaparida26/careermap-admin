@@ -9,8 +9,8 @@ export default function CareerPathPage() {
   const [viewMode, setViewMode] = useState(false);
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-semibold text-[#9a2119] mb-4">
+    <div className="w-full">
+      <h1 className="text-xl font-semibold text-[#9a2119] mb-4">
         Career Path Management
       </h1>
 
