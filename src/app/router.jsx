@@ -15,6 +15,7 @@ import CareerPathPage from "../features/careerpath/CareerPathPage";
 import EntranceExamPage from "../features/entranceexam/EntranceExamPage";
 import InstitutionPage from "../features/institution/InstitutionPage";
 import ScholarshipPage from "../features/scholarship/ScholarshipPage";
+import CareerPlanPage from "../features/careerplan/CareerPlanPage";
 
 export const router = createBrowserRouter([
   {
@@ -38,7 +39,8 @@ export const router = createBrowserRouter([
       {path:"careerpath",element:<CareerPathPage/>},
       {path:"entranceexam",element:<EntranceExamPage/>},
       {path:"institution",element:<InstitutionPage/>},
-      {path:"scholarship",element:<ScholarshipPage/>}
+      {path:"scholarship",element:<ScholarshipPage/>},
+      {path:"careerplan",element:<CareerPlanPage/>}
     ],
   },
 ]);
