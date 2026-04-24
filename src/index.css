@@ -246,3 +246,48 @@ body::after {
 .custom-tabs .ant-tabs-nav-list {
   gap: 10px;
 }
+
+@keyframes authFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes authPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 247, 242, 0.35);
+  }
+  70% {
+    box-shadow: 0 0 0 16px rgba(255, 247, 242, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 247, 242, 0);
+  }
+}
+
+.auth-float {
+  animation: authFloat 4.4s ease-in-out infinite;
+}
+
+.auth-pulse {
+  animation: authPulse 3.2s ease-out infinite;
+}
+
+.auth-float-delay-1 {
+  animation-delay: 0.2s;
+}
+
+.auth-float-delay-2 {
+  animation-delay: 0.9s;
+}
+
+.auth-float-delay-3 {
+  animation-delay: 1.4s;
+}
+
+.auth-float-delay-4 {
+  animation-delay: 2s;
+}
