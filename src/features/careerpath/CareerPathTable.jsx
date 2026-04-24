@@ -13,34 +13,34 @@ const initialData = [
     key: "1",
     module: "Career Library",
     category: "Medical",
-    pathType: "Path 1",
+    path: "Path 1",
     stream: "12th [PCB, PCMB, PCB(M), PCM(B)]",
     graduation: "MBBS",
-    afterGraduation: "M.D/ M.S",
-    afterPostGraduation: "DM-MCH : SS",
-    anyOther: "POST DOC",
+    afterGrad: "M.D / M.S",
+    postGrad: "DM-MCH : SS",
+    other: "POST DOC",
   },
   {
     key: "2",
     module: "Career Library",
     category: "Lecturer/Professor",
-    pathType: "Path 1",
+    path: "Path 1",
     stream: "12th",
-    graduation: "graduation in any stream",
-    afterGraduation: "Post graduation in any discipline",
-    afterPostGraduation: "Ph.D",
-    anyOther: "N/A",
+    graduation: "Graduation in any stream",
+    afterGrad: "Post graduation in any discipline",
+    postGrad: "Ph.D",
+    other: "N/A",
   },
   {
     key: "3",
     module: "Career Library",
     category: "Journalism & Mass communication",
-    pathType: "Path 1",
+    path: "Path 1",
     stream: "12th pass in any stream",
     graduation: "UG(J/JMC) / PG Diploma",
-    afterGraduation: "Ph.D",
-    afterPostGraduation: "N/A",
-    anyOther: "N/A",
+    afterGrad: "Ph.D",
+    postGrad: "N/A",
+    other: "N/A",
   },
 ];
 
@@ -54,7 +54,7 @@ export default function CareerPathTable({
   const [data, setData] = useState(initialData);
 
   const filteredData = data.filter((item) =>
-    item.category.toLowerCase().includes(search.toLowerCase())
+    item.module.toLowerCase().includes(search.toLowerCase())
   );
 
   const handleReset = () => setSearch("");
@@ -63,39 +63,90 @@ export default function CareerPathTable({
     {
       title: <span className="text-[#9a2119] font-semibold">SL</span>,
       render: (_, __, index) => index + 1,
-      width: 60,
+      width: 70,
     },
-    { title: <span className="text-[#9a2119]">Module</span>, dataIndex: "module" },
-    { title: <span className="text-[#9a2119]">Category</span>, dataIndex: "category" },
-    { title: <span className="text-[#9a2119]">Path</span>, dataIndex: "pathType" },
-    { title: <span className="text-[#9a2119]">Stream</span>, dataIndex: "stream" },
-    { title: <span className="text-[#9a2119]">Graduation</span>, dataIndex: "graduation" },
-    { title: <span className="text-[#9a2119]">After Grad</span>, dataIndex: "afterGraduation" },
-    { title: <span className="text-[#9a2119]">After PG</span>, dataIndex: "afterPostGraduation" },
-    { title: <span className="text-[#9a2119]">Other</span>, dataIndex: "anyOther" },
+    {
+      title: <span className="text-[#9a2119] font-semibold">Module</span>,
+      dataIndex: "module",
+    },
+    {
+      title: <span className="text-[#9a2119] font-semibold">Category</span>,
+      dataIndex: "category",
+    },
+    {
+      title: <span className="text-[#9a2119] font-semibold">Path Type</span>,
+      dataIndex: "path",
+    },
+    {
+      title: <span className="text-[#9a2119] font-semibold">Stream</span>,
+      dataIndex: "stream",
+    },
+    {
+      title: <span className="text-[#9a2119] font-semibold">Graduation</span>,
+      dataIndex: "graduation",
+    },
+    {
+      title: <span className="text-[#9a2119] font-semibold">
+        After Graduation
+      </span>,
+      dataIndex: "afterGrad",
+    },
+    {
+      title: <span className="text-[#9a2119] font-semibold">
+        After Post Graduation
+      </span>,
+      dataIndex: "postGrad",
+    },
+    {
+      title: <span className="text-[#9a2119] font-semibold">Any Other</span>,
+      dataIndex: "other",
+    },
     {
       title: (
-        <span className="text-[#9a2119] font-semibold text-right block">
-          Action
-        </span>
+        <span className="text-[#9a2119] font-semibold">Action</span>
       ),
-      align: "right",
-      width: 180,
+      key: "action",
+      align: "right", // ✅ FIX: right align column
       render: (_, record) => (
         <div className="flex justify-end gap-2">
-          <button onClick={() => onView(record)} className="btn-action">
+          {/* View */}
+          <button
+            onClick={() => onView(record)}
+            className="w-9 h-9 flex items-center justify-center rounded-md
+                       border border-[#9a2119]
+                       text-[#9a2119]
+                       hover:border-[#e57373]
+                       hover:text-[#e57373]
+                       transition"
+          >
             <EyeOutlined />
           </button>
-          <button onClick={() => onEdit(record)} className="btn-action">
+
+          {/* Edit */}
+          <button
+            onClick={() => onEdit(record)}
+            className="w-9 h-9 flex items-center justify-center rounded-md
+                       border border-[#9a2119]
+                       text-[#9a2119]
+                       hover:border-[#e57373]
+                       hover:text-[#e57373]
+                       transition"
+          >
             <EditOutlined />
           </button>
+
+          {/* Delete */}
           <button
             onClick={() => {
               const updated = data.filter((d) => d.key !== record.key);
               setData(updated);
               onDelete && onDelete(record);
             }}
-            className="btn-delete"
+            className="w-9 h-9 flex items-center justify-center rounded-md
+                       border border-red-500
+                       text-red-500
+                       hover:bg-red-50
+                       transition"
           >
             <DeleteOutlined />
           </button>
@@ -105,29 +156,56 @@ export default function CareerPathTable({
   ];
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border p-5">
+    <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-5 w-full">
 
-      {/* Header */}
-      <div className="flex justify-between mb-4">
-        <Input
-          placeholder="Search category..."
-          value={search}
-          prefix={<SearchOutlined />}
-          className="w-64"
-          onChange={(e) => setSearch(e.target.value)}
-        />
+      {/* HEADER */}
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="text-lg font-semibold text-[#9a2119]">
+          Career Path
+        </h2>
 
-        <div className="flex gap-2">
-          <button onClick={handleReset} className="btn-main">
-            <ReloadOutlined /> Reset
+        <div className="flex items-center gap-3">
+          <Input
+            placeholder="Search module..."
+            value={search}
+            prefix={<SearchOutlined className="text-[#9a2119]" />}
+            className="w-64 h-9 rounded-md border-[#9a2119]"
+            onChange={(e) => setSearch(e.target.value)}
+          />
+
+          <button
+            onClick={handleReset}
+            className="flex items-center gap-2 px-4 h-9 rounded-md
+                       bg-[#9a2119]
+                       text-white
+                       hover:bg-[#c4392e]
+                       transition"
+          >
+            <ReloadOutlined />
+            Reset
           </button>
-          <button onClick={onAdd} className="btn-main">
+
+          <button
+            onClick={onAdd}
+            className="px-4 h-9 rounded-md
+                       bg-[#9a2119]
+                       text-white
+                       hover:bg-[#c4392e]
+                       transition"
+          >
             + Add
           </button>
         </div>
       </div>
 
-      <Table columns={columns} dataSource={filteredData} pagination={{ pageSize: 5 }} />
+      {/* TABLE */}
+      <Table
+        columns={columns}
+        dataSource={filteredData}
+        pagination={{ pageSize: 5 }}
+        rowClassName="hover:bg-gray-50"
+        scroll={{ x: true }} // ✅ important for large tables
+      />
     </div>
   );
 }
