@@ -1,62 +1,150 @@
-import React from "react";
-import { Table, Button } from "antd";
-import { EyeOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import { Table, Input } from "antd";
+import {
+  EyeOutlined,
+  EditOutlined,
+  DeleteOutlined,
+  SearchOutlined,
+  ReloadOutlined,
+} from "@ant-design/icons";
+import { useState } from "react";
 
-function PathTypeTable({ data, onAdd, onView, onEdit, onDelete, onSearch }) {
+const initialData = [
+  { key: "1", title: "Path 1" },
+  { key: "2", title: "Path 2" },
+  { key: "3", title: "Path 3" },
+  { key: "4", title: "Path 4" },
+  { key: "5", title: "Path 5" },
+  { key: "6", title: "Path 6" },
+  { key: "7", title: "Path 7" },
+];
+
+export default function PathTypeTable({
+  onView,
+  onEdit,
+  onDelete,
+  onAdd,
+}) {
+  const [search, setSearch] = useState("");
+  const [data, setData] = useState(initialData);
+
+  // Search Filter
+  const filteredData = data.filter((item) =>
+    item.title.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const handleReset = () => setSearch("");
+
   const columns = [
     {
-      title: "ID",
+      title: <span className="text-[#9a2119] font-semibold">ID</span>,
       render: (_, __, index) => index + 1,
       width: 80,
     },
     {
-      title: "Title",
+      title: <span className="text-[#9a2119] font-semibold">Title</span>,
       dataIndex: "title",
     },
     {
-      title: "Action",
+      title: <span className="text-[#9a2119] font-semibold">Action</span>,
       render: (_, record) => (
         <div className="flex gap-2">
-          <Button icon={<EyeOutlined />} onClick={() => onView(record)} />
-          <Button icon={<EditOutlined />} onClick={() => onEdit(record)} />
-          <Button
-            danger
-            icon={<DeleteOutlined />}
-            onClick={() => onDelete(record)}
-          />
+          {/* View */}
+          <button
+            onClick={() => onView(record)}
+            className="w-9 h-9 flex items-center justify-center rounded-md
+                       border border-[#9a2119]
+                       text-[#9a2119]
+                       hover:border-[#e57373]
+                       hover:text-[#e57373]
+                       transition"
+          >
+            <EyeOutlined />
+          </button>
+
+          {/* Edit */}
+          <button
+            onClick={() => onEdit(record)}
+            className="w-9 h-9 flex items-center justify-center rounded-md
+                       border border-[#9a2119]
+                       text-[#9a2119]
+                       hover:border-[#e57373]
+                       hover:text-[#e57373]
+                       transition"
+          >
+            <EditOutlined />
+          </button>
+
+          {/* Delete */}
+          <button
+            onClick={() => {
+              const updated = data.filter((d) => d.key !== record.key);
+              setData(updated);
+              onDelete && onDelete(record);
+            }}
+            className="w-9 h-9 flex items-center justify-center rounded-md
+                       border border-red-500
+                       text-red-500
+                       hover:bg-red-50
+                       transition"
+          >
+            <DeleteOutlined />
+          </button>
         </div>
       ),
     },
   ];
 
   return (
-    <div className="bg-white p-6 rounded-2xl shadow border w-full">
+    <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-5">
+      
+      {/* HEADER */}
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="text-lg font-semibold text-[#9a2119]">
+          Path Type
+        </h2>
 
-      {/* Header */}
-      <div className="flex justify-between items-center mb-4">
-        <input
-          placeholder="Search..."
-          onChange={(e) => onSearch(e.target.value)}
-          className="border px-3 py-2 rounded-md w-64"
-        />
+        <div className="flex items-center gap-3">
+          <Input
+            placeholder="Search path..."
+            value={search}
+            prefix={<SearchOutlined className="text-[#9a2119]" />}
+            className="w-64 h-9 rounded-md border-[#9a2119]"
+            onChange={(e) => setSearch(e.target.value)}
+          />
 
-        <Button
-          type="primary"
-          onClick={onAdd}
-          style={{ background: "#9a2119", borderColor: "#9a2119" }}
-        >
-          + Add Path Type
-        </Button>
+          <button
+            onClick={handleReset}
+            className="flex items-center gap-2 px-4 h-9 rounded-md
+                       bg-[#9a2119]
+                       text-white
+                       hover:bg-[#c4392e]
+                       transition"
+          >
+            <ReloadOutlined />
+            Reset
+          </button>
+
+          {/* Add Button */}
+          <button
+            onClick={onAdd}
+            className="px-4 h-9 rounded-md
+                       bg-[#9a2119]
+                       text-white
+                       hover:bg-[#c4392e]
+                       transition"
+          >
+            + Add
+          </button>
+        </div>
       </div>
 
+      {/* TABLE */}
       <Table
         columns={columns}
-        dataSource={data}
-        rowKey="id"
-        pagination={{ pageSize: 6 }}
+        dataSource={filteredData}
+        pagination={{ pageSize: 5 }}
+        rowClassName="hover:bg-gray-50"
       />
     </div>
   );
 }
-
-export default PathTypeTable;
