@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
       { path: "all_users", element: <AllUsers /> },
       { path: "dashboard", element: <DashboardPage /> }, // ✅ no need for "/"
       {path:"mentor",element:<MentorPage/>},
-      {path:"module",element:<ModulePage/>},
+      {path:"modules",element:<ModulePage/>},
       {path:"stream",element:<StreamPage/>},
       {path:"categories",element:<CategoryPage/>},
       {path:"2ndcategories",element:<Category2Page/>},
