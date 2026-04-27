@@ -30,6 +30,7 @@ export default function StatesForm({
       {!viewMode && (
         <Button
           htmlType="submit"
+          block
           className="bg-[#9a2119] text-white"
         >
           Submit
