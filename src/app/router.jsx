@@ -24,6 +24,7 @@ import StatesPage from "../features/states/StatesPage";
 import DistrictsPage from "../features/districts/DistrictsPage";
 import TransactionsPage from "../features/transactions/TransactionsPage";
 import LoginActivitiesPage from "../features/loginactivities/LoginActivitiesPage";
+import NotificationsPage from "../features/notifications/NotificationsPage";
 
 export const router = createBrowserRouter([
   {
@@ -56,7 +57,8 @@ export const router = createBrowserRouter([
       {path:"states",element:<StatesPage/>},
       {path:"districts",element:<DistrictsPage/>},
       {path:"transactions",element:<TransactionsPage/>},
-      {path:"loginactivities",element:<LoginActivitiesPage/>}
+      {path:"loginactivities",element:<LoginActivitiesPage/>},
+      {path:"notifications",element:<NotificationsPage/>}
     ],
   },
 ]);
