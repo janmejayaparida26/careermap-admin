@@ -17,9 +17,10 @@ export default function CountriesForm({ onSubmit, initialValues, viewMode }) {
       {!viewMode && (
         <Button
           htmlType="submit"
+          block
           className="bg-[#9a2119] text-white"
         >
-          Submit
+          Add
         </Button>
       )}
     </Form>
