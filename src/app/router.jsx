@@ -20,6 +20,7 @@ import BookingTable from "../features/bookings/BookingTable";
 import PlansPage from "../features/plans/PlansPage";
 import ServicesPage from "../features/services/ServicesPage";
 import CountriesPage from "../features/allcountries/CountriesPage";
+import StatesPage from "../features/states/StatesPage";
 
 export const router = createBrowserRouter([
   {
@@ -48,7 +49,8 @@ export const router = createBrowserRouter([
       {path:"bookings",element:<BookingTable/>},
       {path:"plans",element:<PlansPage/>},
       {path:"services",element:<ServicesPage/>},
-      {path:"allcountries",element:<CountriesPage/>}
+      {path:"allcountries",element:<CountriesPage/>},
+      {path:"states",element:<StatesPage/>}
     ],
   },
 ]);
