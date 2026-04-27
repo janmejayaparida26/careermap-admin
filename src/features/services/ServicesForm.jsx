@@ -48,7 +48,7 @@ export default function ServicesForm({ onSubmit, initialValues, viewMode }) {
           htmlType="submit"
           className="col-span-2 bg-[#9a2119] text-white"
         >
-          Add
+          Add Services
         </Button>
       )}
     </Form>
