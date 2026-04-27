@@ -18,6 +18,7 @@ import ScholarshipPage from "../features/scholarship/ScholarshipPage";
 import CareerPlanPage from "../features/careerplan/CareerPlanPage";
 import BookingTable from "../features/bookings/BookingTable";
 import PlansPage from "../features/plans/PlansPage";
+import ServicesPage from "../features/services/ServicesPage";
 
 export const router = createBrowserRouter([
   {
@@ -44,7 +45,8 @@ export const router = createBrowserRouter([
       {path:"scholarship",element:<ScholarshipPage/>},
       {path:"careerplan",element:<CareerPlanPage/>},
       {path:"bookings",element:<BookingTable/>},
-      {path:"plans",element:<PlansPage/>}
+      {path:"plans",element:<PlansPage/>},
+      {path:"services",element:<ServicesPage/>}
     ],
   },
 ]);
