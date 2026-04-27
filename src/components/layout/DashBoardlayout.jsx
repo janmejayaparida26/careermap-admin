@@ -6,7 +6,6 @@ import { Outlet, useLocation } from "react-router-dom";
 const pageNameMap = {
   "/dashboard": "Dashboard",
   "/mentor": "Mentors",
-  "/all_users": "All Users",
   "/modules": "Modules",
   "/stream": "Stream",
   "/categories": "Categories",
@@ -16,13 +15,25 @@ const pageNameMap = {
   "/jobscope": "Job Scope",
 };
 
+function getActivePage(pathname) {
+  if (pathname === "/all_users/subscribers") {
+    return "Subscribers";
+  }
+
+  if (pathname.startsWith("/all_users")) {
+    return "All Users";
+  }
+
+  return pageNameMap[pathname] || "Dashboard";
+}
+
 const DashBoardlayout = () => {
     const location = useLocation();
     const [activePage, setActivePage] = useState("Dashboard");
     const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
     useEffect(() => {
-      setActivePage(pageNameMap[location.pathname] || "Dashboard");
+      setActivePage(getActivePage(location.pathname));
     }, [location.pathname]);
 
   return (

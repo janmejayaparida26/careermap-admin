@@ -42,7 +42,7 @@ export default function LoginPage() {
     <div>
       {contextHolder}
       <div className="mb-8 text-center">
-        <h2 className="text-3xl font-bold text-slate-900 sm:text-[2.2rem]">Sign in</h2>
+        <h2 className="text-3xl text- font-bold text-slate-900 sm:text-[2.2rem]">Sign in</h2>
         <p className="mt-3 text-sm leading-6 text-slate-400">
           Enter your details to access your account.
         </p>

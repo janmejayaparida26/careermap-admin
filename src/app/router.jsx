@@ -2,7 +2,17 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import DashboardPage from "../pages/DashboardPage";
 import DashBoardlayout from "../components/layout/DashBoardlayout";
 import MentorPage from "../features/mentor/MentorPage";
-import AllUsers from "../features/allUser/index";
+import AllUsers from "../features/allUser";
+import AllUsersTab from "../features/allUser/tabs/AllUsers";
+import Active from "../features/allUser/tabs/Active";
+import Banned from "../features/allUser/tabs/Banned";
+import EmailUnverified from "../features/allUser/tabs/EmailUnverified";
+import MobileUnverified from "../features/allUser/tabs/MobileUnverified";
+import Subscribers from "../features/allUser/tabs/Subscribers";
+import WithBalance from "../features/allUser/tabs/WithBalance";
+import NotificationToUser from "../features/allUser/tabs/NotificationToUser";
+import UserDetails from "../features/allUser/tabs/UserDetails";
+
 import ModulePage from "../features/modules/ModulePage";
 import StreamPage from "../features/stream/StreamPage";
 import CategoryPage from "../features/categories/CategoryPage";
@@ -41,7 +51,20 @@ export const router = createBrowserRouter([
           { index: true, element: <Navigate to="/dashboard" replace /> },
           { path: "dashboard", element: <DashboardPage /> },
           { path: "mentor", element: <MentorPage /> },
-          { path: "all_users", element: <AllUsers /> },
+          {
+            path: "all_users",
+            element: <AllUsers />,
+            children: [
+              { index: true, element: <AllUsersTab /> },
+              { path: "active", element: <Active /> },
+              { path: "banned", element: <Banned /> },
+              { path: "email-unverified", element: <EmailUnverified /> },
+              { path: "mobile-unverified", element: <MobileUnverified /> },
+              { path: "subscribers", element: <Subscribers /> },
+              { path: "with-balance", element: <WithBalance /> },
+              { path: "notification", element: <NotificationToUser /> },
+            ],
+          },
           { path: "modules", element: <ModulePage /> },
           { path: "stream", element: <StreamPage /> },
           { path: "categories", element: <CategoryPage /> },

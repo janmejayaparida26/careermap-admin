@@ -199,7 +199,7 @@ body::after {
 /* Remove default blue focus/active outline */
 .custom-tabs .ant-tabs-tab-btn:focus,
 .custom-tabs .ant-tabs-tab-btn:active {
-  color: var(--brand-primary) !important;
+  color: #9a2119 !important;
   outline: none !important;
   box-shadow: none !important;
 }
@@ -207,7 +207,7 @@ body::after {
 /* All tabs (default state) */
 .custom-tabs .ant-tabs-tab {
   font-weight: 700 !important; /* always bold */
-  color: var(--brand-primary) !important;
+  color: #9a2119 !important;
   background: transparent !important;
   border-radius: 6px;
   transition: all 0.2s ease;
@@ -215,8 +215,8 @@ body::after {
 
 /* Hover (light effect only) */
 .custom-tabs .ant-tabs-tab:hover {
-  color: var(--brand-accent) !important;
-  background: rgba(192, 57, 43, 0.06); /* light hover */
+  color: #c4392e !important;
+  background: rgba(154, 33, 25, 0.06); /* light hover */
 }
 
 /* Active tab (NO background) */
@@ -226,13 +226,13 @@ body::after {
 
 /* Active text */
 .custom-tabs .ant-tabs-tab-active .ant-tabs-tab-btn {
-  color: var(--brand-primary-dark) !important;
+  color: #9a2119 !important;
   font-weight: 700 !important;
 }
 
 /* Remove blue ink bar flash */
 .custom-tabs .ant-tabs-ink-bar {
-  background: var(--brand-primary) !important;
+  background: #9a2119 !important;
   height: 3px;
   border-radius: 10px;
 }
@@ -290,4 +290,38 @@ body::after {
 
 .auth-float-delay-4 {
   animation-delay: 2s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+    opacity: 0.1;
+  }
+  50% {
+    transform: translateY(-15px);
+    opacity: 0.25;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 0.1;
+  }
+}
+
+.animate-float {
+  animation: float infinite ease-in-out;
+}
+
+@keyframes floatY {
+  0% {
+    transform: translateY(0px);
+    opacity: 0.1;
+  }
+  50% {
+    transform: translateY(-18px); /* same as RN */
+    opacity: 0.15;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 0.1;
+  }
 }
