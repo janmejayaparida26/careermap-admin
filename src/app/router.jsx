@@ -34,6 +34,12 @@ import CareerPlanPage from "../features/careerplan/CareerPlanPage";
 import AllOrder from "../features/AllOrders/AllOrder";
 import ApprovedOrder from "../features/allOrders/ApprovedOrder";
 import PendingOrder from "../features/allOrders/PendngOrder";
+import SupportTickets from "../features/supportTickets/SupportTickets";
+import AllTickets from "../features/supportTickets/AllTickets";
+import PendingTickets from "../features/supportTickets/PendingTickets";
+import ClosedTickets from "../features/supportTickets/ClosedTickets";
+import AnsweredTickets from "../features/supportTickets/AnsweredTickets";
+import TicketDetails from "../features/supportTickets/TicketDetails";
 export const router = createBrowserRouter([
   {
     element: <PublicOnlyRoute />,
@@ -79,6 +85,18 @@ export const router = createBrowserRouter([
               { path: "pending", element: <PendingOrder /> },
             ] 
           },
+          {
+            path: "support_tickets",
+            element: <SupportTickets />,
+            children: [
+              { index: true, element: <Navigate to="/support_tickets/all" replace /> },
+              { path: "all", element: <AllTickets /> },
+              { path: "pending", element: <PendingTickets /> },
+              { path: "closed", element: <ClosedTickets /> },
+              { path: "answered", element: <AnsweredTickets /> },
+            ],
+          },
+          { path: "support_tickets/:ticketId", element: <TicketDetails /> },
           { path: "modules", element: <ModulePage /> },
           { path: "stream", element: <StreamPage /> },
           { path: "categories", element: <CategoryPage /> },

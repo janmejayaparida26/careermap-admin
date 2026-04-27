@@ -28,6 +28,10 @@ function getActivePage(pathname) {
     return "All Orders";
   }
 
+  if (pathname.startsWith("/support_tickets")) {
+    return "Support Tickets";
+  }
+
   return pageNameMap[pathname] || "Dashboard";
 }
 
