@@ -21,6 +21,7 @@ import PlansPage from "../features/plans/PlansPage";
 import ServicesPage from "../features/services/ServicesPage";
 import CountriesPage from "../features/allcountries/CountriesPage";
 import StatesPage from "../features/states/StatesPage";
+import DistrictsPage from "../features/districts/DistrictsPage";
 
 export const router = createBrowserRouter([
   {
@@ -50,7 +51,8 @@ export const router = createBrowserRouter([
       {path:"plans",element:<PlansPage/>},
       {path:"services",element:<ServicesPage/>},
       {path:"allcountries",element:<CountriesPage/>},
-      {path:"states",element:<StatesPage/>}
+      {path:"states",element:<StatesPage/>},
+      {path:"districts",element:<DistrictsPage/>}
     ],
   },
 ]);
