@@ -9,21 +9,41 @@ import { useState } from "react";
 const data = [
   {
     key: "1",
+    id: "USR001",
     user: "Rahul Sharma",
     email: "rahul@gmail.com",
     joined: "2024-01-12",
     balance: "$120",
+    mobile: "+91 9876543210",
+    address: "12 MG Road",
+    city: "Bhubaneswar",
+    state: "Odisha",
+    zip: "751001",
+    country: "India",
+    emailVerified: true,
+    mobileVerified: true,
+    twoFA: false,
   },
   {
     key: "2",
+    id: "USR002",
     user: "Priya Das",
     email: "priya@gmail.com",
     joined: "2024-02-05",
     balance: "$80",
+    mobile: "+91 8765432109",
+    address: "45 Saheed Nagar",
+    city: "Bhubaneswar",
+    state: "Odisha",
+    zip: "751007",
+    country: "India",
+    emailVerified: true,
+    mobileVerified: false,
+    twoFA: true,
   },
 ];
 
-export default function WithBalance() {
+export default function WithBalance({ setSelectedUser }) {
   const [search, setSearch] = useState("");
 
   const filteredData = data.filter((item) =>
@@ -55,9 +75,10 @@ export default function WithBalance() {
     },
     {
       title: <span className="text-[#9a2119] font-semibold">Action</span>,
-    render: () => (
+    render: (_, record) => (
   <div className="flex gap-2">
     <button
+      onClick={() => setSelectedUser(record)}
       className="w-9 h-9 flex items-center justify-center rounded-md 
                  border border-[#9a2119] 
                  text-[#9a2119]
