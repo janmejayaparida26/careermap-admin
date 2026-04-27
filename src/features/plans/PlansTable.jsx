@@ -1,4 +1,4 @@
-import { Table, Input, Tooltip } from "antd";
+import { Table, Input } from "antd";
 import {
   EyeOutlined,
   EditOutlined,
@@ -12,34 +12,22 @@ const initialData = [
   {
     key: "1",
     name: "Free",
-    features: `Career Library - Full Access
-Entrance Exam - Full Access
-Institute - Full Access
-Quiz - Full Access`,
+    features: "Career Library, Entrance Exam, Institute, Quiz",
     module: "Career Library, Entrance Exam, Institute, Quiz",
     price: "0",
   },
   {
     key: "2",
     name: "Gold",
-    features: `70,000+ Mock Test
-Unlimited Pro Live Test
-Unlimited Practice Pro Questions
-17,000+ Previous Year Papers
-Unlimited Re-Attempt`,
+    features: "Mock Test, Live Test, Practice Questions",
     module: "Career Library, Career Assessment",
     price: "1",
   },
   {
     key: "3",
     name: "Platinum",
-    features: `70,000+ Mock Test
-Unlimited Pro Live Test
-Unlimited Practice Pro Questions
-17,000+ Previous Year Papers
-Unlimited Re-Attempt`,
-    module:
-      "Career Library, Career Assessment, Master Class, Book Your Mentor, Entrance Exam, Institute, Scholarship",
+    features: "All Features Included",
+    module: "All Modules",
     price: "50000",
   },
 ];
@@ -59,55 +47,73 @@ export default function PlansTable({
 
   const handleReset = () => setSearch("");
 
-  const ellipsis = (text) => (
-    <Tooltip title={text}>
-      <div className="truncate max-w-[220px] whitespace-pre-line">
-        {text}
-      </div>
-    </Tooltip>
-  );
-
   const columns = [
     {
-      title: "SL",
+      title: <span className="text-[#9a2119] font-semibold">SL</span>,
       render: (_, __, index) => index + 1,
       width: 60,
     },
     {
-      title: "Plan Name",
+      title: <span className="text-[#9a2119] font-semibold">Plan Name</span>,
       dataIndex: "name",
     },
     {
-      title: "Features",
+      title: <span className="text-[#9a2119] font-semibold">Features</span>,
       dataIndex: "features",
-      render: ellipsis,
     },
     {
-      title: "Module",
+      title: <span className="text-[#9a2119] font-semibold">Module</span>,
       dataIndex: "module",
-      render: ellipsis,
     },
     {
-      title: "Price",
+      title: <span className="text-[#9a2119] font-semibold">Price</span>,
       dataIndex: "price",
     },
     {
-      title: "Action",
+      title: <span className="text-[#9a2119] font-semibold">Action</span>,
       align: "right",
       render: (_, record) => (
-        <div className="flex justify-end gap-2">
-          <button onClick={() => onView(record)} className="btn">
+        <div className="flex justify-end gap-3">
+
+          {/* VIEW */}
+          <button
+            onClick={() => onView(record)}
+            className="w-10 h-10 flex items-center justify-center rounded-lg
+                       border border-[#9a2119]
+                       text-[#9a2119]
+                       hover:bg-[#9a2119]
+                       hover:text-white
+                       transition duration-200"
+          >
             <EyeOutlined />
           </button>
-          <button onClick={() => onEdit(record)} className="btn">
+
+          {/* EDIT */}
+          <button
+            onClick={() => onEdit(record)}
+            className="w-10 h-10 flex items-center justify-center rounded-lg
+                       border border-[#9a2119]
+                       text-[#9a2119]
+                       hover:bg-[#9a2119]
+                       hover:text-white
+                       transition duration-200"
+          >
             <EditOutlined />
           </button>
+
+          {/* DELETE */}
           <button
             onClick={() => {
-              setData(data.filter((d) => d.key !== record.key));
+              const updated = data.filter((d) => d.key !== record.key);
+              setData(updated);
               onDelete && onDelete(record);
             }}
-            className="btn border-red-500 text-red-500"
+            className="w-10 h-10 flex items-center justify-center rounded-lg
+                       border border-red-500
+                       text-red-500
+                       hover:bg-red-500
+                       hover:text-white
+                       transition duration-200"
           >
             <DeleteOutlined />
           </button>
@@ -119,41 +125,65 @@ export default function PlansTable({
   return (
     <div className="w-full">
 
+      {/* MAIN HEADING */}
       <h1 className="text-xl font-semibold text-[#9a2119] mb-6">
         Plans Management
       </h1>
 
-      <div className="bg-white rounded-2xl border p-5">
+      {/* CARD */}
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-5">
 
-        <div className="flex justify-between mb-4">
+        {/* HEADER */}
+        <div className="flex items-center justify-between mb-5">
           <h2 className="text-lg font-semibold text-[#9a2119]">
             Plans
           </h2>
 
-          <div className="flex gap-3">
+          <div className="flex items-center gap-4">
+
             <Input
-              placeholder="Search..."
+              placeholder="Search plan..."
               value={search}
-              prefix={<SearchOutlined />}
-              className="w-64"
+              prefix={<SearchOutlined className="text-[#9a2119]" />}
+              className="w-64 h-10 rounded-md border-[#9a2119]"
               onChange={(e) => setSearch(e.target.value)}
             />
 
-            <button onClick={handleReset} className="btn-main">
-              <ReloadOutlined /> Reset
+            {/* RESET */}
+            <button
+              onClick={handleReset}
+              className="flex items-center gap-2 px-5 h-10 rounded-lg
+                         bg-[#9a2119]
+                         text-white
+                         hover:bg-[#c0392b]
+                         transition duration-200"
+            >
+              <ReloadOutlined />
+              Reset
             </button>
 
-            <button onClick={onAdd} className="btn-main">
+            {/* ADD */}
+            <button
+              onClick={onAdd}
+              className="px-5 h-10 rounded-lg
+                         bg-[#9a2119]
+                         text-white
+                         hover:bg-[#c0392b]
+                         transition duration-200"
+            >
               + Add
             </button>
+
           </div>
         </div>
 
+        {/* TABLE */}
         <Table
           columns={columns}
           dataSource={filteredData}
           pagination={{ pageSize: 5 }}
-          scroll={{ x: 1200 }}
+          rowClassName="hover:bg-gray-50"
+          scroll={{ x: true }}
         />
       </div>
     </div>

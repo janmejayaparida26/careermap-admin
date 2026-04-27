@@ -47,7 +47,7 @@ export default function PlansForm({ onSubmit, initialValues, viewMode }) {
           htmlType="submit"
           className="col-span-2 bg-[#9a2119] text-white"
         >
-          Submit
+          Add Plans
         </Button>
       )}
     </Form>
