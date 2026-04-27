@@ -33,9 +33,10 @@ export default function DistrictsForm({
       {!viewMode && (
         <Button
           htmlType="submit"
+          block
           className="bg-[#9a2119] text-white"
         >
-          Submit
+          Add
         </Button>
       )}
     </Form>
