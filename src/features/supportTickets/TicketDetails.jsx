@@ -21,7 +21,7 @@ const initialRepliesByTicket = {
       date: "2026-04-24 18:30",
       message:
         "We have verified your payment and escalated the premium plan activation to the billing team.",
-      attachment: "payment-proof.pdf",
+      attachments: ["payment-proof.pdf"],
     },
   ],
   TKT002: [
@@ -31,7 +31,7 @@ const initialRepliesByTicket = {
       date: "2026-04-25 11:15",
       message:
         "Please re-login once and update your profile again. If the issue remains, share a screenshot.",
-      attachment: "",
+      attachments: [],
     },
   ],
 };
@@ -46,31 +46,6 @@ function formatStatusTone(status) {
   }
 
   return "bg-green-100 text-green-800 border-green-200";
-}
-
-function formatPriorityTone(priority) {
-  if (priority === "High") {
-    return "bg-red-100 text-red-700 border-red-200";
-  }
-
-  if (priority === "Medium") {
-    return "bg-orange-100 text-orange-700 border-orange-200";
-  }
-
-  return "bg-slate-100 text-slate-700 border-slate-200";
-}
-
-function StatCard({ label, value, toneClass }) {
-  return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-400">
-        {label}
-      </p>
-      <p className={`mt-3 inline-flex rounded-full border px-3 py-1 text-sm font-semibold ${toneClass}`}>
-        {value}
-      </p>
-    </div>
-  );
 }
 
 function ActionButton({ children, icon, className = "", ...props }) {
@@ -97,7 +72,7 @@ export default function TicketDetails() {
 
   const [status, setStatus] = useState(ticket?.status || "Pending");
   const [replyText, setReplyText] = useState("");
-  const [attachmentName, setAttachmentName] = useState("");
+  const [attachments, setAttachments] = useState([]);
   const [replies, setReplies] = useState(initialRepliesByTicket[ticketId] || []);
 
   if (!ticket) {
@@ -134,19 +109,19 @@ export default function TicketDetails() {
         minute: "2-digit",
       }),
       message: replyText.trim(),
-      attachment: attachmentName,
+      attachments,
     };
 
     setReplies((prev) => [newReply, ...prev]);
     setReplyText("");
-    setAttachmentName("");
+    setAttachments([]);
     setStatus("Answered");
     showSuccess("Reply sent successfully.");
   };
 
   const handleClear = () => {
     setReplyText("");
-    setAttachmentName("");
+    setAttachments([]);
     showSuccess("Reply form cleared successfully.");
   };
 
@@ -158,6 +133,25 @@ export default function TicketDetails() {
   const handleDeleteReply = (replyId) => {
     setReplies((prev) => prev.filter((reply) => reply.id !== replyId));
     showSuccess("Reply deleted successfully.");
+  };
+
+  const handleAddAttachment = (file) => {
+    setAttachments((prev) => {
+      if (prev.includes(file.name)) {
+        showError(`${file.name} is already added.`);
+        return prev;
+      }
+
+      showSuccess(`${file.name} attached successfully.`);
+      return [...prev, file.name];
+    });
+
+    return false;
+  };
+
+  const handleRemoveAttachment = (fileName) => {
+    setAttachments((prev) => prev.filter((item) => item !== fileName));
+    showSuccess("Attachment removed successfully.");
   };
 
   return (
@@ -189,13 +183,6 @@ export default function TicketDetails() {
         </ActionButton>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Status" value={status} toneClass={formatStatusTone(status)} />
-        <StatCard label="Priority" value={ticket.priority} toneClass={formatPriorityTone(ticket.priority)} />
-        <StatCard label="Opened By" value={ticket.openedBy} toneClass="bg-[#fdf2f1] text-[#9a2119] border-[#f3c7c3]" />
-        <StatCard label="Opened On" value={ticket.openedOn} toneClass="bg-slate-100 text-slate-700 border-slate-200" />
-      </div>
-
       <div className="rounded-[24px] border border-[#f0d7d4] bg-white p-5 shadow-[0_18px_45px_rgba(154,33,25,0.08)]">
         <div className="flex flex-wrap items-start justify-between gap-4 border-b border-[#f4e0dd] pb-4">
           <div>
@@ -203,22 +190,30 @@ export default function TicketDetails() {
               <span className={`inline-flex rounded-full border px-3 py-1 text-xs font-semibold ${formatStatusTone(status)}`}>
                 {status}
               </span>
+              <span className="inline-flex rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-700">
+                {ticket.priority}
+              </span>
               <span className="text-sm font-semibold text-slate-700">{ticket.email}</span>
             </div>
+            <p className="mt-2 text-sm text-slate-500">
+              Opened by {ticket.openedBy} on {ticket.openedOn}
+            </p>
             <p className="mt-3 text-sm leading-7 text-slate-600">{ticket.message}</p>
           </div>
 
-          <Popconfirm
-            title="Close this ticket?"
-            description="The ticket status will change to closed."
-            okText="Close Ticket"
-            cancelText="Cancel"
-            onConfirm={handleCloseTicket}
-          >
-            <button className="rounded-xl bg-[#9a2119] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#c4392e]">
-              Close Ticket
-            </button>
-          </Popconfirm>
+          {status !== "Closed" ? (
+            <Popconfirm
+              title="Close this ticket?"
+              description="The ticket status will change to closed."
+              okText="Close Ticket"
+              cancelText="Cancel"
+              onConfirm={handleCloseTicket}
+            >
+              <button className="rounded-xl bg-[#9a2119] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#c4392e]">
+                Close Ticket
+              </button>
+            </Popconfirm>
+          ) : null}
         </div>
 
         <div className="mt-5 space-y-4">
@@ -243,16 +238,8 @@ export default function TicketDetails() {
 
               <div className="rounded-2xl border border-dashed border-[#e7c9c3] bg-[#fff8f7] p-3">
                 <Upload
-                  maxCount={1}
-                  beforeUpload={(file) => {
-                    setAttachmentName(file.name);
-                    showSuccess(`${file.name} attached successfully.`);
-                    return false;
-                  }}
-                  onRemove={() => {
-                    setAttachmentName("");
-                    showSuccess("Attachment removed successfully.");
-                  }}
+                  multiple
+                  beforeUpload={handleAddAttachment}
                   showUploadList={false}
                 >
                   <button
@@ -264,10 +251,24 @@ export default function TicketDetails() {
                   </button>
                 </Upload>
 
-                {attachmentName ? (
-                  <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-[#fdf2f1] px-3 py-1 text-sm text-[#9a2119]">
-                    <PaperClipOutlined />
-                    {attachmentName}
+                {attachments.length ? (
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {attachments.map((fileName) => (
+                      <div
+                        key={fileName}
+                        className="inline-flex items-center gap-2 rounded-full bg-[#fdf2f1] px-3 py-1 text-sm text-[#9a2119]"
+                      >
+                        <PaperClipOutlined />
+                        <span>{fileName}</span>
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveAttachment(fileName)}
+                          className="flex h-5 w-5 items-center justify-center rounded-full bg-white text-xs text-[#9a2119] hover:bg-[#f3c7c3]"
+                        >
+                          <DeleteOutlined />
+                        </button>
+                      </div>
+                    ))}
                   </div>
                 ) : null}
               </div>
@@ -339,10 +340,17 @@ export default function TicketDetails() {
                     </p>
                     <p className="mt-3 text-sm leading-7 text-slate-700">{reply.message}</p>
 
-                    {reply.attachment ? (
-                      <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-[#f3c7c3] bg-white px-3 py-1 text-sm text-[#9a2119]">
-                        <PaperClipOutlined />
-                        {reply.attachment}
+                    {reply.attachments?.length ? (
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {reply.attachments.map((fileName) => (
+                          <div
+                            key={fileName}
+                            className="inline-flex items-center gap-2 rounded-full border border-[#f3c7c3] bg-white px-3 py-1 text-sm text-[#9a2119]"
+                          >
+                            <PaperClipOutlined />
+                            {fileName}
+                          </div>
+                        ))}
                       </div>
                     ) : null}
                   </div>
