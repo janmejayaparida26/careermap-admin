@@ -1,4 +1,4 @@
-import { Table, Input, Tag } from "antd";
+import { Table, Input, Tag, Modal } from "antd";
 import {
   EyeOutlined,
   SearchOutlined,
@@ -33,9 +33,13 @@ const initialData = [
   },
 ];
 
-export default function BookingTable({ onView }) {
+export default function BookingTable() {
   const [search, setSearch] = useState("");
   const [data] = useState(initialData);
+
+  // Modal state
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState(null);
 
   const filteredData = data.filter((item) =>
     item.user.toLowerCase().includes(search.toLowerCase())
@@ -80,7 +84,10 @@ export default function BookingTable({ onView }) {
       render: (_, record) => (
         <div className="flex justify-end">
           <button
-            onClick={() => onView && onView(record)}
+            onClick={() => {
+              setSelected(record);
+              setOpen(true);
+            }}
             className="w-9 h-9 flex items-center justify-center rounded-md
                        border border-[#9a2119]
                        text-[#9a2119]
@@ -116,7 +123,7 @@ export default function BookingTable({ onView }) {
               placeholder="Search user..."
               value={search}
               prefix={<SearchOutlined className="text-[#9a2119]" />}
-              className="w-64 h-9 rounded-md border-[#9a2119]"
+              className="w-64 h-9"
               onChange={(e) => setSearch(e.target.value)}
             />
 
@@ -124,8 +131,7 @@ export default function BookingTable({ onView }) {
               onClick={handleReset}
               className="flex items-center gap-2 px-4 h-9 rounded-md
                          bg-[#9a2119]
-                         text-white
-                         hover:bg-[#c4392e]"
+                         text-white"
             >
               <ReloadOutlined />
               Reset
@@ -138,9 +144,31 @@ export default function BookingTable({ onView }) {
           columns={columns}
           dataSource={filteredData}
           pagination={{ pageSize: 5 }}
-          rowClassName="hover:bg-gray-50"
         />
       </div>
+
+      {/* VIEW MODAL */}
+      <Modal
+        open={open}
+        onCancel={() => setOpen(false)}
+        footer={null}
+        title="Booking Details"
+      >
+        {selected && (
+          <div className="space-y-2">
+            <p><b>User:</b> {selected.user}</p>
+            <p><b>Member:</b> {selected.member}</p>
+            <p><b>Date:</b> {selected.date}</p>
+            <p><b>Time:</b> {selected.time}</p>
+            <p>
+              <b>Status:</b>{" "}
+              <Tag color={selected.status === "Paid" ? "green" : "red"}>
+                {selected.status}
+              </Tag>
+            </p>
+          </div>
+        )}
+      </Modal>
     </div>
   );
 }
