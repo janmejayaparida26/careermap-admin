@@ -5,7 +5,7 @@ import { LockKeyhole, Mail, ArrowRight } from "lucide-react";
 import { loginUser } from "./authStorage";
 
 const inputClassName =
-  "h-12 w-full border-0 border-b border-[#d8beb8] bg-transparent px-0 pb-1 pl-10 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-[#9a2119] focus:ring-0";
+  "h-12 w-full rounded-xl border border-[#eadfda] bg-[#fbf9f8] px-11 pr-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-[#9a2119] focus:bg-white focus:ring-4 focus:ring-[#9a2119]/10";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -41,19 +41,21 @@ export default function LoginPage() {
   return (
     <div>
       {contextHolder}
-      <div className="mb-10 text-center">
-        <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.32em] text-[#9a2119]/70">Welcome back</p>
-        <h2 className="text-4xl font-bold text-slate-900">Sign in</h2>
+      <div className="mb-8 text-center">
+        <h2 className="text-3xl font-bold text-slate-900 sm:text-[2.2rem]">Sign in</h2>
+        <p className="mt-3 text-sm leading-6 text-slate-400">
+          Enter your details to access your account.
+        </p>
       </div>
 
       <form
         onSubmit={handleSubmit}
-        className="space-y-6"
+        className="space-y-5"
       >
         <div className="space-y-2">
-          <label className="text-[13px] font-semibold text-slate-700">Email Address</label>
+          <label className="text-[13px] font-medium text-slate-500">Email Address</label>
           <div className="relative">
-            <Mail size={18} className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 text-[#9a2119]" />
+            <Mail size={18} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#9a2119]" />
             <input
               type="email"
               className={inputClassName}
@@ -67,13 +69,13 @@ export default function LoginPage() {
 
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <label className="text-[13px] font-semibold text-slate-700">Password</label>
+            <label className="text-[13px] font-medium text-slate-500">Password</label>
             <Link to="/forgot-password" className="text-[13px] font-semibold text-[#9a2119] hover:text-[#b5261d]">
               Forgot password?
             </Link>
           </div>
           <div className="relative">
-            <LockKeyhole size={18} className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 text-[#9a2119]" />
+            <LockKeyhole size={18} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#9a2119]" />
             <input
               type="password"
               className={inputClassName}
@@ -88,13 +90,13 @@ export default function LoginPage() {
         <button
           type="submit"
           disabled={loading}
-          className="mt-2 flex h-12 w-full items-center justify-center gap-2 rounded-2xl bg-[#9a2119] text-sm font-semibold text-white transition hover:bg-[#b5261d] disabled:cursor-not-allowed disabled:opacity-70"
+          className="mt-3 flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#9a2119] text-sm font-semibold text-white shadow-[0_12px_24px_rgba(154,33,25,0.28)] transition hover:bg-[#b5261d] disabled:cursor-not-allowed disabled:opacity-70"
         >
-          {loading ? "Logging in..." : "Login"}
+          {loading ? "Signing in..." : "Sign in"}
           <ArrowRight size={16} />
         </button>
 
-        <div className="pt-2 text-center text-xs text-slate-500">
+        <div className="pt-1 text-center text-xs text-slate-500">
           Demo login:
           <span className="ml-1 font-semibold text-[#9a2119]">admin@careermap.io / Admin@123</span>
         </div>
@@ -103,7 +105,7 @@ export default function LoginPage() {
       <p className="mt-6 text-center text-sm text-slate-500">
         Don&apos;t have an account?{" "}
         <Link to="/signup" className="font-semibold text-[#9a2119] hover:text-[#b5261d]">
-          Create one
+          Sign up
         </Link>
       </p>
     </div>

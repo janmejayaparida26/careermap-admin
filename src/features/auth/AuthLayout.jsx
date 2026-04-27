@@ -1,93 +1,152 @@
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import logo from "../../assets/logo_white.png";
 
-function SignupIllustration() {
+function CornerBurst({ className = "" }) {
   return (
-    <svg viewBox="0 0 280 180" className="h-48 w-full max-w-[260px]" aria-hidden="true">
-      <ellipse cx="140" cy="160" rx="95" ry="18" fill="rgba(255,255,255,0.12)" />
+    <svg viewBox="0 0 160 160" className={className} aria-hidden="true">
+      <g fill="none" stroke="rgba(154,33,25,0.08)" strokeWidth="2">
+        {Array.from({ length: 18 }).map((_, index) => {
+          const angle = (index * 360) / 18;
+          const radians = (angle * Math.PI) / 180;
+          const x1 = 80 + Math.cos(radians) * 34;
+          const y1 = 80 + Math.sin(radians) * 34;
+          const x2 = 80 + Math.cos(radians) * 76;
+          const y2 = 80 + Math.sin(radians) * 76;
 
-      <g transform="translate(28 54)">
-        <circle cx="20" cy="16" r="10" fill="#f3c7b0" />
-        <rect x="12" y="28" width="16" height="34" rx="8" fill="#f6efe6" />
-        <rect x="9" y="60" width="7" height="32" rx="3.5" fill="#8a3e35" />
-        <rect x="24" y="60" width="7" height="32" rx="3.5" fill="#8a3e35" />
-      </g>
-
-      <g transform="translate(84 40)">
-        <circle cx="20" cy="16" r="10" fill="#d6a284" />
-        <rect x="10" y="27" width="20" height="42" rx="10" fill="#bd7b54" />
-        <rect x="7" y="68" width="8" height="38" rx="4" fill="#f0d1b8" />
-        <rect x="25" y="68" width="8" height="38" rx="4" fill="#f0d1b8" />
-      </g>
-
-      <g transform="translate(145 44)">
-        <circle cx="21" cy="15" r="10" fill="#f3c7b0" />
-        <rect x="11" y="26" width="20" height="40" rx="10" fill="#f2b649" />
-        <rect x="10" y="65" width="8" height="38" rx="4" fill="#27303f" />
-        <rect x="24" y="65" width="8" height="38" rx="4" fill="#27303f" />
-      </g>
-
-      <g transform="translate(205 50)">
-        <circle cx="20" cy="15" r="10" fill="#e4b18f" />
-        <rect x="9" y="26" width="22" height="40" rx="11" fill="#fff4c9" />
-        <rect x="9" y="65" width="8" height="42" rx="4" fill="#1f2837" />
-        <rect x="24" y="65" width="8" height="42" rx="4" fill="#1f2837" />
-        <rect x="4" y="35" width="10" height="6" rx="3" fill="#e4b18f" transform="rotate(-25 9 38)" />
+          return <line key={angle} x1={x1} y1={y1} x2={x2} y2={y2} />;
+        })}
       </g>
     </svg>
   );
 }
 
-function LoginIllustration() {
+function BookShape({ className = "" }) {
   return (
-    <svg viewBox="0 0 240 180" className="h-44 w-full max-w-[220px]" aria-hidden="true">
-      <ellipse cx="120" cy="154" rx="82" ry="18" fill="rgba(255,255,255,0.14)" />
-      <ellipse cx="118" cy="88" rx="64" ry="34" fill="rgba(255,255,255,0.14)" />
-
-      <g transform="translate(62 42)">
-        <circle cx="22" cy="16" r="10" fill="#efc0a4" />
-        <rect x="12" y="28" width="20" height="42" rx="10" fill="#f4d164" />
-        <rect x="12" y="69" width="8" height="42" rx="4" fill="#d06a5c" />
-        <rect x="24" y="69" width="8" height="42" rx="4" fill="#d06a5c" />
-        <rect x="28" y="38" width="18" height="6" rx="3" fill="#efc0a4" transform="rotate(-18 37 41)" />
-      </g>
-
-      <g transform="translate(122 44)">
-        <circle cx="22" cy="16" r="10" fill="#efc0a4" />
-        <rect x="12" y="28" width="20" height="42" rx="10" fill="#fff7e1" />
-        <rect x="12" y="69" width="8" height="42" rx="4" fill="#283244" />
-        <rect x="24" y="69" width="8" height="42" rx="4" fill="#283244" />
-        <rect x="-2" y="36" width="18" height="6" rx="3" fill="#efc0a4" transform="rotate(22 7 39)" />
-      </g>
+    <svg viewBox="0 0 180 140" className={className} aria-hidden="true">
+      <path
+        d="M24 40C24 31 31 24 40 24H86C98 24 108 29 114 38V110C108 103 98 100 86 100H40C31 100 24 93 24 84V40Z"
+        fill="rgba(154,33,25,0.08)"
+        stroke="rgba(154,33,25,0.18)"
+        strokeWidth="2"
+      />
+      <path
+        d="M156 40C156 31 149 24 140 24H94C82 24 72 29 66 38V110C72 103 82 100 94 100H140C149 100 156 93 156 84V40Z"
+        fill="rgba(154,33,25,0.05)"
+        stroke="rgba(154,33,25,0.14)"
+        strokeWidth="2"
+      />
+      <path d="M90 36V108" stroke="#9a2119" strokeOpacity="0.18" strokeWidth="2" />
+      <path d="M42 48H78" stroke="#9a2119" strokeOpacity="0.18" strokeWidth="2" strokeLinecap="round" />
+      <path d="M102 48H138" stroke="#9a2119" strokeOpacity="0.18" strokeWidth="2" strokeLinecap="round" />
     </svg>
   );
 }
 
-function AuthPanel({ title, subtitle, type }) {
+function CapShape({ className = "" }) {
   return (
-    <div className="relative h-full overflow-hidden rounded-[30px]">
-      <div className="absolute inset-0 bg-[#9a2119]" />
-      <div className="absolute inset-0 opacity-15 bg-[linear-gradient(rgba(255,255,255,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.12)_1px,transparent_1px)] bg-[size:26px_26px]" />
-      <div className="absolute inset-y-0 right-0 w-[42%] rounded-l-[120px] bg-[#fff3d9]" />
+    <svg viewBox="0 0 96 96" className={className} aria-hidden="true">
+      <path
+        d="M12 38L48 22L84 38L48 54L12 38Z"
+        fill="rgba(154,33,25,0.10)"
+        stroke="rgba(154,33,25,0.20)"
+        strokeWidth="2"
+      />
+      <path
+        d="M26 45V58C26 63 37 70 48 70C59 70 70 63 70 58V45"
+        fill="none"
+        stroke="rgba(154,33,25,0.18)"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+      />
+      <path
+        d="M84 39V59"
+        stroke="#9a2119"
+        strokeOpacity="0.35"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+      />
+      <circle cx="84" cy="63" r="4" fill="#9a2119" fillOpacity="0.25" />
+    </svg>
+  );
+}
 
-      <div className="relative z-10 flex h-full flex-col justify-between p-10 text-white">
-        <div className="space-y-8">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-[11px] backdrop-blur-sm">
-            <div className="h-2 w-2 rounded-full bg-white" />
-            <span className="tracking-[0.18em] text-white/80">designstudio</span>
-          </div>
+function BriefcaseShape({ className = "" }) {
+  return (
+    <svg viewBox="0 0 170 130" className={className} aria-hidden="true">
+      <rect
+        x="22"
+        y="40"
+        width="126"
+        height="70"
+        rx="16"
+        fill="rgba(154,33,25,0.07)"
+        stroke="rgba(154,33,25,0.16)"
+        strokeWidth="2"
+      />
+      <path
+        d="M62 40V32C62 24 68 18 76 18H94C102 18 108 24 108 32V40"
+        fill="none"
+        stroke="rgba(154,33,25,0.18)"
+        strokeWidth="2.4"
+      />
+      <path
+        d="M22 68H66C66 74 72 79 78 79H92C98 79 104 74 104 68H148"
+        fill="none"
+        stroke="#9a2119"
+        strokeOpacity="0.18"
+        strokeWidth="2.2"
+      />
+    </svg>
+  );
+}
 
-          <div className="max-w-[250px]">
-            <h2 className="text-[40px] font-bold leading-[1.05]">{title}</h2>
-            <p className="mt-4 text-sm leading-6 text-white/75">{subtitle}</p>
-          </div>
-        </div>
+function TargetShape({ className = "" }) {
+  return (
+    <svg viewBox="0 0 120 120" className={className} aria-hidden="true">
+      <circle cx="60" cy="60" r="34" fill="none" stroke="rgba(154,33,25,0.12)" strokeWidth="8" />
+      <circle cx="60" cy="60" r="20" fill="none" stroke="rgba(154,33,25,0.18)" strokeWidth="6" />
+      <circle cx="60" cy="60" r="7" fill="#9a2119" fillOpacity="0.18" />
+      <path
+        d="M68 52L92 28"
+        stroke="#9a2119"
+        strokeOpacity="0.25"
+        strokeWidth="5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M87 28H96V37"
+        fill="none"
+        stroke="#9a2119"
+        strokeOpacity="0.25"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
-        <div className="flex justify-center">
-          {type === "signup" ? <SignupIllustration /> : <LoginIllustration />}
-        </div>
-      </div>
-    </div>
+function PencilShape({ className = "" }) {
+  return (
+    <svg viewBox="0 0 260 180" className={className} aria-hidden="true">
+      <path
+        d="M46 120L150 52L187 89L117 145L46 120Z"
+        fill="rgba(154,33,25,0.06)"
+        stroke="rgba(154,33,25,0.14)"
+        strokeWidth="2"
+      />
+      <path
+        d="M150 52L170 31L208 69L187 89L150 52Z"
+        fill="rgba(154,33,25,0.12)"
+      />
+      <path
+        d="M46 120L33 154L68 141L46 120Z"
+        fill="rgba(235,196,150,0.55)"
+        stroke="rgba(154,33,25,0.12)"
+        strokeWidth="2"
+      />
+      <path d="M59 112L126 137" stroke="#9a2119" strokeOpacity="0.12" strokeWidth="3" />
+    </svg>
   );
 }
 
@@ -95,46 +154,55 @@ export default function AuthLayout() {
   const location = useLocation();
   const isSignup = location.pathname === "/signup";
   const isForgot = location.pathname === "/forgot-password";
-  const panelTitle = isSignup ? "We're so glad to have you on board!" : isForgot ? "Reset your access with ease" : "Welcome back!";
-  const panelSubtitle = isSignup
-    ? "Join millions of users all over the world and keep up with the trends in the design world."
+
+  const panelTitle = isSignup
+    ? "Create your admin account and get started with Career Map."
     : isForgot
-      ? "Verify your email, confirm the code, and create a fresh password for your admin account."
-      : "Pick up where you left off.";
+      ? "Recover access securely with code verification and a new password."
+      : "Secure access for your Career Map admin dashboard.";
+
+  const panelSubtitle = isSignup
+    ? "Your own content stays here, only the visual style has been refreshed to match the clean centered design."
+    : isForgot
+      ? "Follow the steps below to verify your email and choose a fresh password."
+      : "Use your existing account details to continue managing content and users.";
 
   return (
-    <div className="min-h-screen overflow-hidden bg-[linear-gradient(135deg,#f6eeea_0%,#f8f1ed_55%,#efe3de_100%)] px-4 py-8 sm:px-6 lg:px-8">
-      <div className="pointer-events-none absolute left-[10%] top-[6%] h-80 w-80 rounded-full bg-white/50 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-[8%] left-[16%] h-72 w-72 rounded-full bg-[#f1ddd4] blur-3xl" />
-      <div className="pointer-events-none absolute right-[14%] top-[20%] h-96 w-96 rounded-[40%] bg-white/45 blur-3xl" />
+    <div className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_top,#faf7f5_0%,#f7f4f1_46%,#f3efeb_100%)] px-4 py-8 sm:px-6 lg:px-8">
+      <CornerBurst className="pointer-events-none absolute -left-10 -top-10 h-40 w-40 auth-float auth-float-delay-4" />
+      <CornerBurst className="pointer-events-none absolute -right-12 -top-10 h-44 w-44 rotate-45 auth-float auth-float-delay-2" />
+      <BookShape className="pointer-events-none absolute left-[2%] top-[28%] h-32 w-32 auth-float auth-float-delay-1" />
+      <CapShape className="pointer-events-none absolute right-[18%] top-[12%] h-16 w-16 auth-float auth-float-delay-3" />
+      <PencilShape className="pointer-events-none absolute right-[3%] top-[32%] hidden h-48 w-72 lg:block auth-float auth-float-delay-2" />
+      <BriefcaseShape className="pointer-events-none absolute left-[7%] bottom-[18%] hidden h-24 w-32 md:block auth-float auth-float-delay-2" />
+      <TargetShape className="pointer-events-none absolute right-[10%] bottom-[12%] hidden h-20 w-20 md:block auth-float auth-float-delay-4" />
 
-      <div className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-6xl items-center justify-center">
-        <div
-          className={`relative grid w-full max-w-5xl overflow-hidden rounded-[34px] bg-[#fff5de] shadow-[0_30px_80px_rgba(101,63,52,0.16)] lg:grid-cols-2 ${isSignup ? "" : "lg:[&>section:first-child]:order-2"}`}
-        >
-          <section className="min-h-[680px] bg-[#fff8e7]">
-            <div className="flex h-full items-center justify-center p-8 lg:p-12">
-              <div className="w-full max-w-md">
-                <div className={`mb-8 flex items-center ${isSignup ? "justify-start" : "justify-center"} gap-3`}>
-                  <img src={logo} alt="Career Map" className="h-10 w-auto rounded-xl bg-[#9a2119] px-3 py-2" />
-                </div>
-                <Outlet />
-                <div className="mt-8 lg:hidden">
-                  <Link to="/login" className="text-sm font-medium text-[#9a2119]">
-                    Login
-                  </Link>
-                </div>
+      <div className="pointer-events-none absolute bottom-[6%] left-[24%] h-20 w-20 rounded-full border border-[#9a2119]/8 bg-white/35 shadow-[0_18px_45px_rgba(154,33,25,0.05)]" />
+      <div className="pointer-events-none absolute bottom-[8%] right-[24%] h-12 w-12 rotate-12 rounded-[16px] border border-[#9a2119]/8 bg-white/35" />
+
+      <div className="relative z-10 mx-auto flex min-h-[calc(100vh-4rem)] max-w-6xl items-center justify-center">
+        <div className="w-full max-w-xl text-center">
+          <div
+            className={`mx-auto overflow-hidden rounded-[30px] border border-white/80 bg-white/92 px-6 py-7 shadow-[0_24px_70px_rgba(67,39,32,0.12)] backdrop-blur-xl sm:px-8 sm:py-9 ${
+              isSignup ? "max-w-[540px]" : isForgot ? "max-w-[560px]" : "max-w-[470px]"
+            }`}
+          >
+            <div className="mb-7 flex justify-center">
+              <div className="inline-flex items-center gap-3 rounded-full border border-[#9a2119]/10 bg-[#fff7f5] px-4 py-2 shadow-sm">
+                <img src={logo} alt="Career Map" className="h-9 w-auto rounded-xl bg-[#9a2119] px-3 py-2" />
+                <span className="text-xs font-semibold uppercase tracking-[0.22em] text-[#9a2119]/70">
+                  Admin Portal
+                </span>
               </div>
             </div>
-          </section>
 
-          <section className="min-h-[680px] bg-transparent">
-            <AuthPanel
-              title={panelTitle}
-              subtitle={panelSubtitle}
-              type={isSignup ? "signup" : "login"}
-            />
-          </section>
+            <Outlet />
+          </div>
+
+          <div className="mx-auto mt-6 max-w-lg rounded-[24px] border border-white/70 bg-white/55 px-5 py-4 text-center shadow-[0_14px_40px_rgba(67,39,32,0.06)] backdrop-blur-sm">
+            <p className="text-sm font-semibold text-[#9a2119]">{panelTitle}</p>
+            <p className="mt-1 text-sm leading-6 text-slate-500">{panelSubtitle}</p>
+          </div>
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ import {
 } from "./authStorage";
 
 const inputClassName =
-  "h-12 w-full border-0 border-b border-[#d8beb8] bg-transparent px-0 pb-1 pl-10 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-[#9a2119] focus:ring-0";
+  "h-12 w-full rounded-xl border border-[#eadfda] bg-[#fbf9f8] px-11 pr-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-[#9a2119] focus:bg-white focus:ring-4 focus:ring-[#9a2119]/10";
 
 export default function ForgotPasswordPage() {
   const navigate = useNavigate();
@@ -86,10 +86,9 @@ export default function ForgotPasswordPage() {
   return (
     <div>
       {contextHolder}
-      <div className="mb-10 text-center">
-        <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.32em] text-[#9a2119]/70">Reset password</p>
-        <h2 className="text-4xl font-bold text-slate-900">Forgot password?</h2>
-        <p className="mt-3 text-sm leading-6 text-slate-500">
+      <div className="mb-8 text-center">
+        <h2 className="text-3xl font-bold text-slate-900 sm:text-[2.2rem]">Forgot password?</h2>
+        <p className="mt-3 text-sm leading-6 text-slate-400">
           We&apos;ll send a verification code to your email, confirm it, then let you create a new password.
         </p>
       </div>
@@ -120,9 +119,9 @@ export default function ForgotPasswordPage() {
           className="space-y-6"
         >
           <div className="space-y-2">
-            <label className="text-[13px] font-semibold text-slate-700">Email Address</label>
+            <label className="text-[13px] font-medium text-slate-500">Email Address</label>
             <div className="relative">
-              <Mail size={18} className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 text-[#9a2119]" />
+              <Mail size={18} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#9a2119]" />
               <input
                 type="email"
                 className={inputClassName}
@@ -141,7 +140,7 @@ export default function ForgotPasswordPage() {
           <button
             type="submit"
             disabled={loading}
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#9a2119] text-sm font-semibold text-white transition hover:bg-[#b5261d] disabled:cursor-not-allowed disabled:opacity-70"
+            className="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#9a2119] text-sm font-semibold text-white shadow-[0_12px_24px_rgba(154,33,25,0.28)] transition hover:bg-[#b5261d] disabled:cursor-not-allowed disabled:opacity-70"
           >
             {loading ? "Sending code..." : "Send Verification Code"}
             <ArrowRight size={16} />
@@ -162,9 +161,9 @@ export default function ForgotPasswordPage() {
           </div>
 
           <div className="space-y-2">
-            <label className="text-[13px] font-semibold text-slate-700">Verification Code</label>
+            <label className="text-[13px] font-medium text-slate-500">Verification Code</label>
             <div className="relative">
-              <ShieldCheck size={18} className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 text-[#9a2119]" />
+              <ShieldCheck size={18} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#9a2119]" />
               <input
                 type="text"
                 className={inputClassName}
@@ -188,7 +187,7 @@ export default function ForgotPasswordPage() {
             <button
               type="submit"
               disabled={loading}
-              className="flex h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-[#9a2119] text-sm font-semibold text-white transition hover:bg-[#b5261d] disabled:cursor-not-allowed disabled:opacity-70"
+              className="flex h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-[#9a2119] text-sm font-semibold text-white shadow-[0_12px_24px_rgba(154,33,25,0.28)] transition hover:bg-[#b5261d] disabled:cursor-not-allowed disabled:opacity-70"
             >
               {loading ? "Verifying..." : "Verify Code"}
               <ArrowRight size={16} />
@@ -207,9 +206,9 @@ export default function ForgotPasswordPage() {
           </div>
 
           <div className="space-y-2">
-            <label className="text-[13px] font-semibold text-slate-700">New Password</label>
+            <label className="text-[13px] font-medium text-slate-500">New Password</label>
             <div className="relative">
-              <LockKeyhole size={18} className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 text-[#9a2119]" />
+              <LockKeyhole size={18} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#9a2119]" />
               <input
                 type="password"
                 className={inputClassName}
@@ -222,9 +221,9 @@ export default function ForgotPasswordPage() {
           </div>
 
           <div className="space-y-2">
-            <label className="text-[13px] font-semibold text-slate-700">Confirm Password</label>
+            <label className="text-[13px] font-medium text-slate-500">Confirm Password</label>
             <div className="relative">
-              <LockKeyhole size={18} className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 text-[#9a2119]" />
+              <LockKeyhole size={18} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#9a2119]" />
               <input
                 type="password"
                 className={inputClassName}
@@ -247,7 +246,7 @@ export default function ForgotPasswordPage() {
             <button
               type="submit"
               disabled={loading}
-              className="flex h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-[#9a2119] text-sm font-semibold text-white transition hover:bg-[#b5261d] disabled:cursor-not-allowed disabled:opacity-70"
+              className="flex h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-[#9a2119] text-sm font-semibold text-white shadow-[0_12px_24px_rgba(154,33,25,0.28)] transition hover:bg-[#b5261d] disabled:cursor-not-allowed disabled:opacity-70"
             >
               {loading ? "Updating password..." : "Reset Password"}
               <ArrowRight size={16} />

@@ -5,7 +5,7 @@ import { UserRound, Mail, LockKeyhole, ArrowRight } from "lucide-react";
 import { signupUser } from "./authStorage";
 
 const inputClassName =
-  "h-12 w-full border-0 border-b border-[#d8beb8] bg-transparent px-0 pb-1 pl-10 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-[#9a2119] focus:ring-0";
+  "h-12 w-full rounded-xl border border-[#eadfda] bg-[#fbf9f8] px-11 pr-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-[#9a2119] focus:bg-white focus:ring-4 focus:ring-[#9a2119]/10";
 
 export default function SignupPage() {
   const navigate = useNavigate();
@@ -50,19 +50,21 @@ export default function SignupPage() {
   return (
     <div>
       {contextHolder}
-      <div className="mb-10 text-center">
-        <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.32em] text-[#9a2119]/70">Create account</p>
-        <h2 className="text-4xl font-bold text-slate-900">Sign up</h2>
+      <div className="mb-8 text-center">
+        <h2 className="text-3xl font-bold text-slate-900 sm:text-[2.2rem]">Sign up</h2>
+        <p className="mt-3 text-sm leading-6 text-slate-400">
+          Create your account with your own details below.
+        </p>
       </div>
 
       <form
         onSubmit={handleSubmit}
-        className="space-y-6"
+        className="space-y-5"
       >
         <div className="space-y-2">
-          <label className="text-[13px] font-semibold text-slate-700">Full Name</label>
+          <label className="text-[13px] font-medium text-slate-500">Full Name</label>
           <div className="relative">
-            <UserRound size={18} className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 text-[#9a2119]" />
+            <UserRound size={18} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#9a2119]" />
             <input
               type="text"
               className={inputClassName}
@@ -75,9 +77,9 @@ export default function SignupPage() {
         </div>
 
         <div className="space-y-2">
-          <label className="text-[13px] font-semibold text-slate-700">Email Address</label>
+          <label className="text-[13px] font-medium text-slate-500">Email Address</label>
           <div className="relative">
-            <Mail size={18} className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 text-[#9a2119]" />
+            <Mail size={18} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#9a2119]" />
             <input
               type="email"
               className={inputClassName}
@@ -90,9 +92,9 @@ export default function SignupPage() {
         </div>
 
         <div className="space-y-2">
-          <label className="text-[13px] font-semibold text-slate-700">Password</label>
+          <label className="text-[13px] font-medium text-slate-500">Password</label>
           <div className="relative">
-            <LockKeyhole size={18} className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 text-[#9a2119]" />
+            <LockKeyhole size={18} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#9a2119]" />
             <input
               type="password"
               className={inputClassName}
@@ -105,9 +107,9 @@ export default function SignupPage() {
         </div>
 
         <div className="space-y-2">
-          <label className="text-[13px] font-semibold text-slate-700">Confirm Password</label>
+          <label className="text-[13px] font-medium text-slate-500">Confirm Password</label>
           <div className="relative">
-            <LockKeyhole size={18} className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 text-[#9a2119]" />
+            <LockKeyhole size={18} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#9a2119]" />
             <input
               type="password"
               className={inputClassName}
@@ -122,9 +124,9 @@ export default function SignupPage() {
         <button
           type="submit"
           disabled={loading}
-          className="mt-2 flex h-12 w-full items-center justify-center gap-2 rounded-2xl bg-[#9a2119] text-sm font-semibold text-white transition hover:bg-[#b5261d] disabled:cursor-not-allowed disabled:opacity-70"
+          className="mt-3 flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#9a2119] text-sm font-semibold text-white shadow-[0_12px_24px_rgba(154,33,25,0.28)] transition hover:bg-[#b5261d] disabled:cursor-not-allowed disabled:opacity-70"
         >
-          {loading ? "Creating account..." : "Create Account"}
+          {loading ? "Creating account..." : "Sign up"}
           <ArrowRight size={16} />
         </button>
       </form>
@@ -132,7 +134,7 @@ export default function SignupPage() {
       <p className="mt-6 text-center text-sm text-slate-500">
         Already have an account?{" "}
         <Link to="/login" className="font-semibold text-[#9a2119] hover:text-[#b5261d]">
-          Login here
+          Sign in
         </Link>
       </p>
     </div>
