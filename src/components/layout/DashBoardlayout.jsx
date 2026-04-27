@@ -24,6 +24,10 @@ function getActivePage(pathname) {
     return "All Users";
   }
 
+  if (pathname.startsWith("/all_orders")) {
+    return "All Orders";
+  }
+
   return pageNameMap[pathname] || "Dashboard";
 }
 

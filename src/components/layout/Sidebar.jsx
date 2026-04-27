@@ -16,6 +16,7 @@ const navSections = [
   { label: "CONTENT",    items: [{ icon: BookOpen, name: "Modules", path:"/module" }, { icon: Layers, name: "Stream", path:"/stream" }, { icon: Tag, name: "Categories", path:"/categories" }, { icon: Tags, name: "2nd Categories", path:"/2ndcategories" }, { icon: Tags, name: "Subcategories", path:"/subcategories" }] },
   { label: "CAREER",     items: [{ icon: DollarSign, name: "Salary Range", path:"/salary" }, { icon: Briefcase, name: "Job Scope", path:"/jobscope" }, { icon: GitBranch, name: "Path Type" }, { icon: MapPin, name: "Career Path" }, { icon: ClipboardList, name: "Entrance Exam" }, { icon: Building2, name: "Institution" }, { icon: Video, name: "Master Class" }, { icon: Award, name: "Scholarship" }] },
   { label: "MANAGEMENT", items: [{ icon: Image, name: "Banner Slider" }, { icon: MapPin, name: "Career Plan" }, { icon: Bell, name: "Subscribers", path:"/all_users/subscribers" }, { icon: CalendarCheck, name: "Bookings" }, { icon: CreditCard, name: "Plans" }, { icon: HelpCircle, name: "Quiz" }, { icon: Repeat, name: "Subscriptions" }, { icon: Wrench, name: "Services" }] },
+  {label:"ORDERS", items:[{icon:ListChecks, name:"All Orders", path:"/all_orders"}]}
 ];
 
 export default function Sidebar({ activePage, setActivePage, collapsed, setCollapsed }) {
