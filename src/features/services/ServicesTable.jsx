@@ -173,7 +173,7 @@ export default function ServicesTable({
               onClick={onAdd}
               className="px-5 h-10 rounded-lg bg-[#9a2119] text-white"
             >
-              + Add
+              + Add Services
             </button>
           </div>
         </div>
