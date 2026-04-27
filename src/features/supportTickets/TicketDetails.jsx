@@ -52,7 +52,7 @@ function ActionButton({ children, icon, className = "", ...props }) {
   return (
     <button
       {...props}
-      className={`inline-flex h-10 items-center gap-2 rounded-xl px-4 text-sm font-semibold transition ${className}`}
+      className={`inline-flex h-9 items-center gap-1.5 rounded-xl px-3 text-sm font-semibold transition ${className}`}
     >
       {icon}
       {children}
@@ -81,7 +81,7 @@ export default function TicketDetails() {
         <h1 className="text-xl font-semibold text-[#9a2119]">Ticket not found</h1>
         <button
           onClick={() => navigate("/support_tickets/all")}
-          className="mt-4 px-4 py-2 rounded-md bg-[#9a2119] text-white hover:bg-[#c4392e] transition"
+          className="mt-4 px-4 py-2 rounded-xl bg-[#9a2119] text-white hover:bg-[#c4392e] transition"
         >
           Back to Support Tickets
         </button>
@@ -176,7 +176,7 @@ export default function TicketDetails() {
 
         <ActionButton
           onClick={() => navigate("/support_tickets/all")}
-          className="bg-[#9a2119] text-white hover:bg-[#c4392e] shadow-[0_12px_24px_rgba(154,33,25,0.18)]"
+          className="bg-[#9a2119] text-white hover:bg-[#c4392e] shadow-[0_10px_18px_rgba(154,33,25,0.16)]"
           icon={<ArrowLeftOutlined />}
         >
           Back
@@ -236,7 +236,7 @@ export default function TicketDetails() {
                 Maximum upload size: 2MB
               </p>
 
-              <div className="rounded-2xl border border-dashed border-[#e7c9c3] bg-[#fff8f7] p-3">
+              <div >
                 <Upload
                   multiple
                   beforeUpload={handleAddAttachment}
@@ -244,7 +244,7 @@ export default function TicketDetails() {
                 >
                   <button
                     type="button"
-                    className="inline-flex h-10 items-center gap-2 rounded-xl border border-[#f3c7c3] bg-white px-4 text-sm font-semibold text-[#9a2119] transition hover:bg-[#fdf2f1]"
+                    className="inline-flex  items-center gap-2 rounded-xl border border-[#f3c7c3] bg-white px-4 py-2  text-sm font-semibold text-[#9a2119] transition hover:bg-[#fdf2f1]"
                   >
                     <InboxOutlined />
                     Choose File
@@ -282,14 +282,14 @@ export default function TicketDetails() {
                 cancelText="Cancel"
                 onConfirm={handleClear}
               >
-                <button className="rounded-xl border border-[#9a2119] px-4 py-2 text-sm font-semibold text-[#9a2119] transition hover:bg-[#fdf2f1]">
+                <button className="rounded-xl border border-[#9a2119] px-3 py-2 text-sm font-semibold text-[#9a2119] transition hover:bg-[#fdf2f1]">
                   Clear
                 </button>
               </Popconfirm>
 
               <ActionButton
                 onClick={handleReply}
-                className="bg-[#9a2119] text-white hover:bg-[#c4392e] shadow-[0_12px_24px_rgba(154,33,25,0.18)]"
+                className="bg-[#9a2119] text-white hover:bg-[#c4392e] shadow-[0_10px_18px_rgba(154,33,25,0.16)]"
                 icon={<SendOutlined />}
               >
                 Reply
@@ -362,7 +362,7 @@ export default function TicketDetails() {
                     cancelText="Cancel"
                     onConfirm={() => handleDeleteReply(reply.id)}
                   >
-                    <button className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#ef4444] text-white transition hover:bg-[#dc2626]">
+                    <button className="flex  items-center justify-center  text-[#dc2626] transition hover:text-[#9a2119]">
                       <DeleteOutlined />
                     </button>
                   </Popconfirm>
