@@ -10,6 +10,12 @@ import Category2Page from "../features/2ndcategories/Category2Page";
 import SubCategoryPage from "../features/subcategories/SubCategoryPage";
 import SalaryPage from "../features/salary/SalaryPage";
 import JobScopePage from "../features/jobscope/JobScopePage";
+import PathTypePage from "../features/pathtype/PathTypePage";
+import CareerPathPage from "../features/careerpath/CareerPathPage";
+import EntranceExamPage from "../features/entranceexam/EntranceExamPage";
+import InstitutionPage from "../features/institution/InstitutionPage";
+import ScholarshipPage from "../features/scholarship/ScholarshipPage";
+import CareerPlanPage from "../features/careerplan/CareerPlanPage";
 
 export const router = createBrowserRouter([
   {
@@ -28,7 +34,13 @@ export const router = createBrowserRouter([
       {path:"2ndcategories",element:<Category2Page/>},
       {path:"subcategories",element:<SubCategoryPage/>},
       {path:"salary",element:<SalaryPage/>},
-      {path:"jobscope",element:<JobScopePage/>}
+      {path:"jobscope",element:<JobScopePage/>},
+      {path:"pathtype",element:<PathTypePage/>},
+      {path:"careerpath",element:<CareerPathPage/>},
+      {path:"entranceexam",element:<EntranceExamPage/>},
+      {path:"institution",element:<InstitutionPage/>},
+      {path:"scholarship",element:<ScholarshipPage/>},
+      {path:"careerplan",element:<CareerPlanPage/>}
     ],
   },
 ]);
