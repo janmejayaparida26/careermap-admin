@@ -23,6 +23,7 @@ import CountriesPage from "../features/allcountries/CountriesPage";
 import StatesPage from "../features/states/StatesPage";
 import DistrictsPage from "../features/districts/DistrictsPage";
 import TransactionsPage from "../features/transactions/TransactionsPage";
+import LoginActivitiesPage from "../features/loginactivities/LoginActivitiesPage";
 
 export const router = createBrowserRouter([
   {
@@ -54,7 +55,8 @@ export const router = createBrowserRouter([
       {path:"allcountries",element:<CountriesPage/>},
       {path:"states",element:<StatesPage/>},
       {path:"districts",element:<DistrictsPage/>},
-      {path:"transactions",element:<TransactionsPage/>}
+      {path:"transactions",element:<TransactionsPage/>},
+      {path:"loginactivities",element:<LoginActivitiesPage/>}
     ],
   },
 ]);
