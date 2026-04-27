@@ -26,6 +26,12 @@ import AuthLayout from "../features/auth/AuthLayout";
 import LoginPage from "../features/auth/LoginPage";
 import SignupPage from "../features/auth/SignupPage";
 import ForgotPasswordPage from "../features/auth/ForgotPasswordPage";
+import PathTypePage from "../features/pathtype/PathTypePage";
+import CareerPathPage from "../features/careerpath/CareerPathPage";
+import EntranceExamPage from "../features/entranceexam/EntranceExamPage";
+import InstitutionPage from "../features/institution/InstitutionPage";
+import ScholarshipPage from "../features/scholarship/ScholarshipPage";
+import CareerPlanPage from "../features/careerplan/CareerPlanPage";
 
 export const router = createBrowserRouter([
   {
@@ -74,6 +80,25 @@ export const router = createBrowserRouter([
           { path: "jobscope", element: <JobScopePage /> },
         ],
       },
+      { index: true, element: <Navigate to="/dashboard" /> },
+      { path: "dashboard", element: <DashboardPage /> },
+      { path: "mentor", element: <MentorPage /> },
+      { path: "all_users", element: <AllUsers /> },
+      { path: "dashboard", element: <DashboardPage /> }, // ✅ no need for "/"
+      {path:"mentor",element:<MentorPage/>},
+      {path:"modules",element:<ModulePage/>},
+      {path:"stream",element:<StreamPage/>},
+      {path:"categories",element:<CategoryPage/>},
+      {path:"2ndcategories",element:<Category2Page/>},
+      {path:"subcategories",element:<SubCategoryPage/>},
+      {path:"salary",element:<SalaryPage/>},
+      {path:"jobscope",element:<JobScopePage/>},
+      {path:"pathtype",element:<PathTypePage/>},
+      {path:"careerpath",element:<CareerPathPage/>},
+      {path:"entranceexam",element:<EntranceExamPage/>},
+      {path:"institution",element:<InstitutionPage/>},
+      {path:"scholarship",element:<ScholarshipPage/>},
+      {path:"careerplan",element:<CareerPlanPage/>}
     ],
   },
 ]);
