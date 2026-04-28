@@ -64,7 +64,7 @@ const navSections = [
     label: "GENERAL SETTINGS",
     items: [
       { icon: GlobeIcon, name: "Global Settings" },
-      { icon: GalleryVerticalIcon, name: "Logo & Favicon" },
+      { icon: GalleryVerticalIcon, name: "Logo & Favicon", path: "/logo&favicon" },
       { icon: LanguagesIcon, name: "Languages" },
 
       {
