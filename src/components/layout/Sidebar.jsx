@@ -169,7 +169,7 @@ export default function Sidebar({
 
                   {/* SUBMENU WITH ARROW */}
                   {isOpen && !collapsed && (
-                    <div className="ml-11 mt-1 flex flex-col bg-gray-50 rounded-lg border border-gray-100 py-1">
+                    <div className="pl-9 mt-1 flex flex-col bg-gray-50 rounded-lg border border-gray-100 py-1">
 
                       {item.children.map((child) => (
                         <button
