@@ -224,7 +224,7 @@ export default function LanguagePage() {
 
       <section className="space-y-5">
        
- <h2 className="text-xl font-bold text-[#9a2119]">
+     <h2 className="text-xl font-bold text-[#9a2119]">
      Manage Languages
       </h2>
        <div className="bg-white p-5 rounded-2xl shadow-md border">

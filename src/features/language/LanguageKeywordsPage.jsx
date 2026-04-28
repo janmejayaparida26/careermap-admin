@@ -210,54 +210,18 @@ export default function LanguageKeywordsPage() {
     <>
       {contextHolder}
 
-      <section className="space-y-5">
-        <div className="rounded-[28px] border border-[#f0d7d4] bg-gradient-to-br from-white via-[#fff8f7] to-[#fff2ef] p-6 shadow-[0_18px_45px_rgba(154,33,25,0.08)]">
-          <div className="flex flex-wrap items-start justify-between gap-4">
-            <div>
-              <button
-                type="button"
-                onClick={() => navigate("/language")}
-                className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#efd0cb] bg-white px-4 py-2 text-sm font-semibold text-[#9a2119] transition hover:bg-[#fdf2f1]"
-              >
-                <ArrowLeftOutlined />
-                Back to Languages
-              </button>
-              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#c46b62]">
-                Translation Keys
-              </p>
-              <h1 className="mt-2 text-3xl font-bold text-[#9a2119]">{language.name} Keywords</h1>
-              <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">
-                Maintain the selected language translations. Existing keys stay locked during edit,
-                while values can be updated safely.
-              </p>
-            </div>
+     <section className="space-y-5">
+       
+     <h2 className="text-xl font-bold text-[#9a2119]">    <ArrowLeftOutlined  className="mr-2" onClick={() => navigate("/language")}/>
+      
+    Language Keywords
+      </h2>
+       <div className="bg-white p-5 rounded-2xl shadow-md border">
+        
+      <div className="flex justify-between mb-4">
+             
+        <h2 className="text-[#9a2119] font-semibold"> Language Keywords</h2>
 
-            <div className="rounded-2xl border border-[#f1d4d0] bg-white/80 px-4 py-3 text-right shadow-sm">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                Language Status
-              </p>
-              <Tag
-                color={language.type === "Default" ? "green" : "default"}
-                className="mt-2 rounded-full px-3 py-1"
-              >
-                {language.type}
-              </Tag>
-              <p className="mt-3 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                Code
-              </p>
-              <p className="mt-1 text-xl font-bold text-[#9a2119]">{language.code}</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="rounded-[24px] border border-[#f0d7d4] bg-white p-5 shadow-[0_18px_40px_rgba(154,33,25,0.06)]">
-          <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
-            <div>
-              <h2 className="text-lg font-semibold text-[#9a2119]">Language Keywords</h2>
-              <p className="text-sm text-slate-500">
-                Each key maps to a display value used in the app.
-              </p>
-            </div>
 
             <div className="flex flex-wrap gap-3">
               <Input
