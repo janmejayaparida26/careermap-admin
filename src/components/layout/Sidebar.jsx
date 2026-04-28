@@ -1,53 +1,175 @@
 import {
-  LayoutDashboard, Users, GraduationCap, BookOpen, Layers,
-  Tag, Tags, DollarSign, Briefcase, GitBranch, MapPin,
-  ClipboardList, Building2, Video, Award, Image, CreditCard,
-  Bell, CalendarCheck, ListChecks, HelpCircle, Repeat, Wrench,
-  ChevronLeft, ChevronRight,
+  Award,
+  Bell,
+  BellIcon,
+  BookOpen,
+  Briefcase,
+  Building2,
+  CalendarCheck,
+  ChevronLeft,
+  ChevronRight,
+  ClipboardList,
+  CreditCard,
+  DollarSign,
+  FileText,
+  GitBranch,
+  Globe2,
+  GraduationCap,
+  HelpCircle,
+  IndianRupeeIcon,
+  Languages,
+  Layers,
+  LayoutDashboard,
+  ListChecks,
+  LogInIcon,
+  MapPin,
+  MessageSquare,
+  Repeat,
+  Search,
+  Settings2,
+  Tag,
+  Tags,
+  Users,
+  Wrench,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import logoFull from "../../assets/logo_white.png";
+import logoCompact from "../../assets/logo_white_small.png";
+
 const navSections = [
-  { label: "MAIN",       items: [{ icon: LayoutDashboard, name: "Dashboard",path:"/dashboard" }] },
-  { label: "USERS",      items: [{ icon: GraduationCap, name: "Mentors", path:"/mentor" }, { icon: Users, name: "All Users" }] },
-  { label: "CONTENT",    items: [{ icon: BookOpen, name: "Modules" }, { icon: Layers, name: "Stream" }, { icon: Tag, name: "Categories" }, { icon: Tags, name: "2nd Categories" }, { icon: Tags, name: "Subcategories" }] },
-  { label: "CAREER",     items: [{ icon: DollarSign, name: "Salary Range" }, { icon: Briefcase, name: "Job Scope" }, { icon: GitBranch, name: "Path Type" }, { icon: MapPin, name: "Career Path" }, { icon: ClipboardList, name: "Entrance Exam" }, { icon: Building2, name: "Institution" }, { icon: Video, name: "Master Class" }, { icon: Award, name: "Scholarship" }] },
-  { label: "MANAGEMENT", items: [{ icon: Image, name: "Banner Slider" }, { icon: MapPin, name: "Career Plan" }, { icon: Bell, name: "Subscribers" }, { icon: CalendarCheck, name: "Bookings" }, { icon: CreditCard, name: "Plans" }, { icon: HelpCircle, name: "Quiz" }, { icon: Repeat, name: "Subscriptions" }, { icon: Wrench, name: "Services" }] },
+  {
+    label: "MAIN",
+    items: [{ icon: LayoutDashboard, name: "Dashboard", path: "/dashboard" }],
+  },
+  {
+    label: "USERS",
+    items: [
+      { icon: GraduationCap, name: "Mentors", path: "/mentor" },
+      { icon: Users, name: "All Users", path: "/all_users" },
+    ],
+  },
+  {
+    label: "CONTENT",
+    items: [
+      { icon: BookOpen, name: "Modules", path: "/modules" },
+      { icon: Layers, name: "Stream", path: "/stream" },
+      { icon: Tag, name: "Categories", path: "/categories" },
+      { icon: Tags, name: "2nd Categories", path: "/2ndcategories" },
+      { icon: Tags, name: "Subcategories", path: "/subcategories" },
+    ],
+  },
+  {
+    label: "CAREER",
+    items: [
+      { icon: DollarSign, name: "Salary Range", path: "/salary" },
+      { icon: Briefcase, name: "Job Scope", path: "/jobscope" },
+      { icon: GitBranch, name: "Path Type", path: "/pathtype" },
+      { icon: MapPin, name: "Career Path", path: "/careerpath" },
+      { icon: ClipboardList, name: "Entrance Exam", path: "/entranceexam" },
+      { icon: Building2, name: "Institution", path: "/institution" },
+      { icon: Award, name: "Scholarship", path: "/scholarship" },
+    ],
+  },
+  {
+    label: "MANAGEMENT",
+    items: [
+      { icon: MapPin, name: "Career Plan", path: "/careerplan" },
+      { icon: Bell, name: "Subscribers", path: "/all_users/subscribers" },
+      { icon: CalendarCheck, name: "Bookings", path: "/bookings" },
+      { icon: CreditCard, name: "Plans", path: "/plans" },
+      { icon: HelpCircle, name: "Quiz", path: "/quiz" },
+      { icon: Repeat, name: "Subscriptions" },
+      { icon: Wrench, name: "Services", path: "/services" },
+    ],
+  },
+  {
+    label: "COUNTRIES",
+    items: [
+      { icon: Globe2, name: "All Countries", path: "/allcountries" },
+      { icon: MapPin, name: "States", path: "/states" },
+      { icon: MapPin, name: "Districts", path: "/districts" },
+    ],
+  },
+  {
+    label: "REPORT",
+    items: [
+      { icon: IndianRupeeIcon, name: "Transactions", path: "/transactions" },
+      { icon: LogInIcon, name: "Login Activities", path: "/loginactivities" },
+      { icon: BellIcon, name: "Notifications", path: "/notifications" },
+    ],
+  },
+  {
+    label: "ORDERS",
+    items: [{ icon: ListChecks, name: "All Orders", path: "/all_orders" }],
+  },
+  {
+    label: "JOB MANAGEMENT",
+    items: [
+      { icon: Briefcase, name: "Job", path: "/jobs" },
+      { icon: FileText, name: "Job Application", path: "/job-applications" },
+    ],
+  },
+  {
+    label: "SUPPORT",
+    items: [{ icon: MessageSquare, name: "Support Tickets", path: "/support_tickets" }],
+  },
+  {
+    label: "SETTINGS",
+    items: [
+      { icon: Settings2, name: "Global Settings", path: "/globalsettings" },
+      { icon: Languages, name: "Language", path: "/language" },
+      { icon: Search, name: "SEO", path: "/seo" },
+      { icon: Settings2, name: "Social Credential", path: "/social-credential" },
+    ],
+  },
 ];
 
 export default function Sidebar({ activePage, setActivePage, collapsed, setCollapsed }) {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+
   return (
-    <aside className={`fixed top-0 left-0 h-full z-40 flex flex-col transition-all duration-300 ${collapsed ? "w-[72px]" : "w-[240px]"}`}
-      style={{ background: "linear-gradient(#ffffff)", borderRight: "1px solid rgba(99,179,237,0.08)" }}>
+    <aside
+      className={`fixed top-0 left-0 z-40 flex h-full flex-col transition-all duration-300 ${
+        collapsed ? "w-[72px]" : "w-[240px]"
+      }`}
+      style={{ background: "#fff", borderRight: "1px solid #eee" }}
+    >
+      <div
+        className={`flex h-20 items-center gap-3 border-b px-4 ${
+          collapsed ? "justify-between" : ""
+        }`}
+      >
+        <div
+          className={`overflow-hidden transition-all duration-300 ${
+            collapsed ? "h-16 w-[50px]" : "h-12 w-[150px]"
+          }`}
+        >
+          <img
+            src={collapsed ? logoCompact : logoFull}
+            alt="Career Map"
+            className={`h-full transition-all duration-300 ${
+              collapsed ? "w-full object-contain" : "w-full object-contain object-left"
+            }`}
+          />
+        </div>
 
-      {/* Logo */}
-      <div className="flex items-center h-24 w-42 px-4 gap-3 border-b border-white/5">
-        {/* <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-teal-400 to-cyan-600 flex items-center justify-center flex-shrink-0 shadow-lg shadow-teal-500/30">
-          <MapPin size={15} className="text-white" />
-        </div> */}
-
-        <img src="https://res.cloudinary.com/dcc7qgxmb/image/upload/v1776687674/logo_white_p86nub.png"></img>
-        
-        {/* {!collapsed && (
-          <div>
-            <span className="text-red-900 font-display font-bold text-sm tracking-wider">CAREER</span>
-            <span className="text-grey-900 font-display font-bold text-sm tracking-wider"> MAP</span>
-          </div>
-          
-        )} */}
-        <button onClick={() => setCollapsed(!collapsed)}
-          className={`ml-auto w-6 h-6 rounded-md flex items-center justify-center transition-all ${collapsed ? "mx-auto" : ""}`}>
-          {collapsed ? <ChevronRight size={13} /> : <ChevronLeft size={13} />}
+        <button
+          onClick={() => setCollapsed(!collapsed)}
+          className={`${collapsed ? "" : "ml-auto"} flex h-6 w-6 items-center justify-center rounded-md`}
+        >
+          {collapsed ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}
         </button>
       </div>
 
-      {/* Nav */}
-         {/* Nav */}
-      <nav className="flex-1 overflow-y-auto py-4 scrollbar-hide">
+      <nav className="scrollbar-hide flex-1 overflow-y-auto py-4">
         {navSections.map((section) => (
-          <div key={section.label} className="mb-2">
-            {!collapsed && <p className="text-[10px] font-semibold text-slate-600 tracking-widest px-4 mb-1">{section.label}</p>}
-            
+          <div key={section.label} className="mb-3">
+            {!collapsed && (
+              <p className="mb-2 px-4 text-[10px] font-semibold tracking-widest text-slate-500">
+                {section.label}
+              </p>
+            )}
+
             {section.items.map((item) => {
               const Icon = item.icon;
               const isActive = activePage === item.name;
@@ -57,17 +179,17 @@ export default function Sidebar({ activePage, setActivePage, collapsed, setColla
                   key={item.name}
                   onClick={() => {
                     setActivePage(item.name);
-                    if (item.path) navigate(item.path); // 👈 THIS LINE IS IMPORTANT
+                    if (item.path) navigate(item.path);
                   }}
-                  className={`relative flex items-center gap-3 w-full px-4 py-2 text-sm transition-all duration-200 group ${isActive 
-    ? "text-[var(--brand-primary)]" 
-    : "text-[var(--text-hint)] hover:text-[var(--brand-primary)]"
-    }`}
+                  className={`flex w-full items-center gap-3 px-4 py-2 text-sm transition ${
+                    isActive
+                      ? "text-[#9a2119]"
+                      : "text-gray-600 hover:text-[#9a2119]"
+                  }`}
                 >
-                  <span className="flex-shrink-0 w-7 h-7 flex items-center justify-center">
+                  <span className="flex h-6 w-6 items-center justify-center">
                     <Icon size={15} />
                   </span>
-
                   {!collapsed && <span>{item.name}</span>}
                 </button>
               );
@@ -76,14 +198,15 @@ export default function Sidebar({ activePage, setActivePage, collapsed, setColla
         ))}
       </nav>
 
-      {/* Admin pill */}
       {!collapsed && (
-        <div className="p-4 border-t border-white/5">
-          <div className="flex items-center gap-3 p-2 rounded-xl bg-white/5 border border-white/5">
-            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-teal-400 to-cyan-600 flex items-center justify-center text-white font-bold text-xs">A</div>
-            <div className="flex-1 min-w-0">
-              <p className="text-white text-xs font-semibold truncate">Admin</p>
-              <p className="text-slate-500 text-[10px] truncate">admin@careermap.io</p>
+        <div className="border-t p-4">
+          <div className="flex items-center gap-3">
+            <div className="flex h-8 w-8 items-center justify-center rounded bg-[#9a2119] text-white">
+              A
+            </div>
+            <div>
+              <p className="text-sm font-semibold">Admin</p>
+              <p className="text-xs text-gray-400">admin@careermap.io</p>
             </div>
           </div>
         </div>
