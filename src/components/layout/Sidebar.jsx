@@ -11,6 +11,7 @@ import {
   Languages,
   Search,
   Settings2,
+  FileText,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import logoFull from "../../assets/logo_white.png";
@@ -25,6 +26,7 @@ const navSections = [
   { label: "COUNTRIES", items: [{ icon: Globe2, name: "All Countries", path: "/allcountries" }, { icon: MapPin, name: "States", path: "/states" }, { icon: MapPin, name: "Districts", path: "/districts" }] },
   { label: "REPORT", items: [{ icon: IndianRupeeIcon, name: "Transactions", path: "/transactions" }, { icon: LogInIcon, name: "Login Activities", path: "/loginactivities" }, { icon: BellIcon, name: "Notifications", path: "/notifications" }] },
   { label: "ORDERS", items: [{ icon: ListChecks, name: "All Orders", path: "/all_orders" }] },
+  { label: "JOB MANAGEMENT", items: [{ icon: Briefcase, name: "Job", path: "/jobs" }, { icon: FileText, name: "Job Application", path: "/job-applications" }] },
   { label: "SUPPORT", items: [{ icon: MessageSquare, name: "Support Tickets", path: "/support_tickets" }] },
   { label: "SETTINGS", items: [{ icon: Settings2, name: "Global Settings", path: "/globalsettings" }, { icon: Languages, name: "Language", path: "/language" }, { icon: Search, name: "SEO", path: "/seo" }, { icon: Settings2, name: "Social Credential", path: "/social-credential" }] },
 ];
