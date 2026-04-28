@@ -223,36 +223,13 @@ export default function LanguagePage() {
       {contextHolder}
 
       <section className="space-y-5">
-        <div className="rounded-[28px] border border-[#f0d7d4] bg-gradient-to-br from-white via-[#fff8f7] to-[#fff2ef] p-6 shadow-[0_18px_45px_rgba(154,33,25,0.08)]">
-          <div className="flex flex-wrap items-start justify-between gap-4">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#c46b62]">
-                Localization
-              </p>
-              <h1 className="mt-2 text-3xl font-bold text-[#9a2119]">Language Management</h1>
-              <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">
-                Manage available app languages, keep one default language active, and open
-                keyword translations for each language from the action column.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-[#f1d4d0] bg-white/80 px-4 py-3 text-right shadow-sm">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                Total Languages
-              </p>
-              <p className="mt-1 text-3xl font-bold text-[#9a2119]">{languages.length}</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="rounded-[24px] border border-[#f0d7d4] bg-white p-5 shadow-[0_18px_40px_rgba(154,33,25,0.06)]">
-          <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
-            <div>
-              <h2 className="text-lg font-semibold text-[#9a2119]">Languages</h2>
-              <p className="text-sm text-slate-500">
-                Create, edit, delete, and manage translation keywords.
-              </p>
-            </div>
+       
+ <h2 className="text-xl font-bold text-[#9a2119]">
+     Manage Languages
+      </h2>
+       <div className="bg-white p-5 rounded-2xl shadow-md border">
+      <div className="flex justify-between mb-4">
+        <h2 className="text-[#9a2119] font-semibold">Language List</h2>
 
             <div className="flex flex-wrap gap-3">
               <Input
@@ -260,21 +237,21 @@ export default function LanguagePage() {
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
                 prefix={<SearchOutlined className="text-[#9a2119]" />}
-                className="h-10 w-64"
-              />
+              className="w-64 h-9 rounded-md border-[#9a2119]"
+            />
               <Button
                 icon={<ReloadOutlined />}
                 onClick={() => setSearch("")}
-                className="h-10 border-[#e8b9b4] text-[#9a2119] hover:!border-[#9a2119] hover:!text-[#9a2119]"
-              >
+                 className="flex items-center gap-2 px-4 h-9 rounded-md bg-[#9a2119] text-white hover:bg-[#c4392e] transition"
+         >
                 Reset
               </Button>
               <Button
                 type="primary"
                 icon={<PlusOutlined />}
                 onClick={handleAdd}
-                className="h-10 border-none bg-[#9a2119] px-4 hover:!bg-[#c4392e]"
-              >
+                style={{ background: "#9a2119", borderColor: "#9a2119" }}
+         >
                 Add Language
               </Button>
             </div>
