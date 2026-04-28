@@ -13,6 +13,10 @@ import {
   UsersIcon,
   ProjectorIcon,
   ChevronRight as ArrowIcon
+  Languages,
+  Search,
+  Settings2,
+  FileText,
 } from "lucide-react";
 
 import { useNavigate } from "react-router-dom";
@@ -82,6 +86,21 @@ const navSections = [
       { icon: ProjectorIcon, name: "SEO" }
     ]
   }
+import logoFull from "../../assets/logo_white.png";
+import logoCompact from "../../assets/logo_white_small.png";
+
+const navSections = [
+  { label: "MAIN", items: [{ icon: LayoutDashboard, name: "Dashboard", path: "/dashboard" }] },
+  { label: "USERS", items: [{ icon: GraduationCap, name: "Mentors", path: "/mentor" }, { icon: Users, name: "All Users", path: "/all_users" }] },
+  { label: "CONTENT", items: [{ icon: BookOpen, name: "Modules", path: "/modules" }, { icon: Layers, name: "Stream", path: "/stream" }, { icon: Tag, name: "Categories", path: "/categories" }, { icon: Tags, name: "2nd Categories", path: "/2ndcategories" }, { icon: Tags, name: "Subcategories", path: "/subcategories" }] },
+  { label: "CAREER", items: [{ icon: DollarSign, name: "Salary Range", path: "/salary" }, { icon: Briefcase, name: "Job Scope", path: "/jobscope" }, { icon: GitBranch, name: "Path Type", path: "/pathtype" }, { icon: MapPin, name: "Career Path", path: "/careerpath" }, { icon: ClipboardList, name: "Entrance Exam", path: "/entranceexam" }, { icon: Building2, name: "Institution", path: "/institution" }, { icon: Award, name: "Scholarship", path: "/scholarship" }] },
+  { label: "MANAGEMENT", items: [ { icon: MapPin, name: "Career Plan", path: "/careerplan" }, { icon: Bell, name: "Subscribers", path: "/all_users/subscribers" }, { icon: CalendarCheck, name: "Bookings", path: "/bookings" }, { icon: CreditCard, name: "Plans", path: "/plans" }, { icon: HelpCircle, name: "Quiz", path: "/quiz" }, { icon: Repeat, name: "Subscriptions" }, { icon: Wrench, name: "Services", path: "/services" }] },
+  { label: "COUNTRIES", items: [{ icon: Globe2, name: "All Countries", path: "/allcountries" }, { icon: MapPin, name: "States", path: "/states" }, { icon: MapPin, name: "Districts", path: "/districts" }] },
+  { label: "REPORT", items: [{ icon: IndianRupeeIcon, name: "Transactions", path: "/transactions" }, { icon: LogInIcon, name: "Login Activities", path: "/loginactivities" }, { icon: BellIcon, name: "Notifications", path: "/notifications" }] },
+  { label: "ORDERS", items: [{ icon: ListChecks, name: "All Orders", path: "/all_orders" }] },
+  { label: "JOB MANAGEMENT", items: [{ icon: Briefcase, name: "Job", path: "/jobs" }, { icon: FileText, name: "Job Application", path: "/job-applications" }] },
+  { label: "SUPPORT", items: [{ icon: MessageSquare, name: "Support Tickets", path: "/support_tickets" }] },
+  { label: "SETTINGS", items: [{ icon: Settings2, name: "Global Settings", path: "/globalsettings" }, { icon: Languages, name: "Language", path: "/language" }, { icon: Search, name: "SEO", path: "/seo" }, { icon: Settings2, name: "Social Credential", path: "/social-credential" }] },
 ];
 
 export default function Sidebar({
@@ -103,6 +122,19 @@ export default function Sidebar({
           src="https://res.cloudinary.com/dcc7qgxmb/image/upload/v1776687674/logo_white_p86nub.png"
           className="h-10"
         />
+      style={{ background: "linear-gradient(#ffffff)", borderRight: "1px solid rgba(99,179,237,0.08)" }}>
+
+      {/* Logo */}
+      <div className={`flex items-center h-20 px-4 gap-3 border-b border-white/5 ${collapsed ? "justify-between" : ""}`}>
+        <div
+          className={`overflow-hidden transition-all duration-300 ${collapsed ? "w-[50px] h-16" : "w-[150px] h-12"}`}
+        >
+          <img
+            src={collapsed ? logoCompact : logoFull}
+            alt="Career Map"
+            className={`h-full transition-all duration-300 ${collapsed ? "w-full object-contain" : "w-full object-contain object-left"}`}
+          />
+        </div>
 
         <button onClick={() => setCollapsed(!collapsed)} className="ml-auto">
           {collapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}

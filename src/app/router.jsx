@@ -54,6 +54,16 @@ import AllTemplatesPage from "../features/email&notification/alltemplates/AllTem
 import GlobalTemplatePage from "../features/email&notification/globaltemplates/GlobalTemplatePage";
 import EmailConfigPage from "../features/email&notification/emailconfig/EmailConfigPage";
 import SmsConfigPage from "../features/email&notification/smsconfig/SmsConfigPage";
+import JobPage from "../features/jobs/JobPage";
+import JobFormPage from "../features/jobs/JobFormPage";
+import JobApplicationsPage from "../features/jobs/JobApplicationsPage";
+import QuizPage from "../features/quiz/QuizPage";
+import QuizQuestionsPage from "../features/quiz/QuizQuestionsPage";
+import GlobalSettingsPage from "../features/globalsettings/GlobalSettingsPage";
+import LanguagePage from "../features/language/LanguagePage";
+import LanguageKeywordsPage from "../features/language/LanguageKeywordsPage";
+import SeoPage from "../features/seo/SeoPage";
+import SocialCredentialPage from "../features/socialcredential/SocialCredentialPage";
 
 export const router = createBrowserRouter([
   {
@@ -119,6 +129,32 @@ export const router = createBrowserRouter([
           { path: "subcategories", element: <SubCategoryPage /> },
           { path: "salary", element: <SalaryPage /> },
           { path: "jobscope", element: <JobScopePage /> },
+          { path: "pathtype", element: <PathTypePage /> },
+          { path: "careerpath", element: <CareerPathPage /> },
+          { path: "entranceexam", element: <EntranceExamPage /> },
+          { path: "institution", element: <InstitutionPage /> },
+          { path: "scholarship", element: <ScholarshipPage /> },
+          { path: "careerplan", element: <CareerPlanPage /> },
+          { path: "bookings", element: <BookingTable /> },
+          { path: "plans", element: <PlansPage /> },
+          { path: "services", element: <ServicesPage /> },
+          { path: "allcountries", element: <CountriesPage /> },
+          { path: "states", element: <StatesPage /> },
+          { path: "districts", element: <DistrictsPage /> },
+          { path: "transactions", element: <TransactionsPage /> },
+          { path: "loginactivities", element: <LoginActivitiesPage /> },
+          { path: "notifications", element: <NotificationsPage /> },
+          { path: "jobs", element: <JobPage /> },
+          { path: "jobs/add", element: <JobFormPage mode="add" /> },
+          { path: "jobs/:jobId/edit", element: <JobFormPage mode="edit" /> },
+          { path: "job-applications", element: <JobApplicationsPage /> },
+          { path: "quiz", element: <QuizPage /> },
+          { path: "quiz/:quizId/questions", element: <QuizQuestionsPage /> },
+          { path: "globalsettings", element: <GlobalSettingsPage /> },
+          { path: "language", element: <LanguagePage /> },
+          { path: "language/:languageId/keywords", element: <LanguageKeywordsPage /> },
+          { path: "seo", element: <SeoPage /> },
+          { path: "social-credential", element: <SocialCredentialPage /> },
         ],
       },
       { index: true, element: <Navigate to="/dashboard" /> },
