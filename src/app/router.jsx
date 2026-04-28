@@ -52,6 +52,8 @@ import NotificationsPage from "../features/notifications/NotificationsPage";
 import JobPage from "../features/jobs/JobPage";
 import JobFormPage from "../features/jobs/JobFormPage";
 import JobApplicationsPage from "../features/jobs/JobApplicationsPage";
+import QuizPage from "../features/quiz/QuizPage";
+import QuizQuestionsPage from "../features/quiz/QuizQuestionsPage";
 import GlobalSettingsPage from "../features/globalsettings/GlobalSettingsPage";
 import LanguagePage from "../features/language/LanguagePage";
 import LanguageKeywordsPage from "../features/language/LanguageKeywordsPage";
@@ -141,6 +143,8 @@ export const router = createBrowserRouter([
           { path: "jobs/add", element: <JobFormPage mode="add" /> },
           { path: "jobs/:jobId/edit", element: <JobFormPage mode="edit" /> },
           { path: "job-applications", element: <JobApplicationsPage /> },
+          { path: "quiz", element: <QuizPage /> },
+          { path: "quiz/:quizId/questions", element: <QuizQuestionsPage /> },
           { path: "globalsettings", element: <GlobalSettingsPage /> },
           { path: "language", element: <LanguagePage /> },
           { path: "language/:languageId/keywords", element: <LanguageKeywordsPage /> },

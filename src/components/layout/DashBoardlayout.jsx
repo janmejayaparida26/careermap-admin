@@ -30,6 +30,7 @@ const pageNameMap = {
   "/notifications": "Notifications",
   "/jobs": "Job",
   "/job-applications": "Job Application",
+  "/quiz": "Quiz",
   "/globalsettings": "Global Settings",
   "/language": "Language",
   "/seo": "SEO",
@@ -59,6 +60,10 @@ function getActivePage(pathname) {
 
   if (pathname.startsWith("/jobs")) {
     return "Job";
+  }
+
+  if (pathname.startsWith("/quiz")) {
+    return "Quiz";
   }
 
   return pageNameMap[pathname] || "Dashboard";
