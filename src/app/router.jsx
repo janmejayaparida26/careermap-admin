@@ -52,6 +52,7 @@ import NotificationsPage from "../features/notifications/NotificationsPage";
 import GlobalSettingsPage from "../features/globalsettings/GlobalSettingsPage";
 import LanguagePage from "../features/language/LanguagePage";
 import LanguageKeywordsPage from "../features/language/LanguageKeywordsPage";
+import SeoPage from "../features/seo/SeoPage";
 import SocialCredentialPage from "../features/socialcredential/SocialCredentialPage";
 
 export const router = createBrowserRouter([
@@ -136,6 +137,7 @@ export const router = createBrowserRouter([
           { path: "globalsettings", element: <GlobalSettingsPage /> },
           { path: "language", element: <LanguagePage /> },
           { path: "language/:languageId/keywords", element: <LanguageKeywordsPage /> },
+          { path: "seo", element: <SeoPage /> },
           { path: "social-credential", element: <SocialCredentialPage /> },
         ],
       },

@@ -9,9 +9,12 @@ import {
   LogInIcon,
   BellIcon,
   Languages,
+  Search,
   Settings2,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import logoFull from "../../assets/logo_white.png";
+import logoCompact from "../../assets/logo_white_small.png";
 
 const navSections = [
   { label: "MAIN", items: [{ icon: LayoutDashboard, name: "Dashboard", path: "/dashboard" }] },
@@ -23,7 +26,7 @@ const navSections = [
   { label: "REPORT", items: [{ icon: IndianRupeeIcon, name: "Transactions", path: "/transactions" }, { icon: LogInIcon, name: "Login Activities", path: "/loginactivities" }, { icon: BellIcon, name: "Notifications", path: "/notifications" }] },
   { label: "ORDERS", items: [{ icon: ListChecks, name: "All Orders", path: "/all_orders" }] },
   { label: "SUPPORT", items: [{ icon: MessageSquare, name: "Support Tickets", path: "/support_tickets" }] },
-  { label: "SETTINGS", items: [{ icon: Settings2, name: "Global Settings", path: "/globalsettings" }, { icon: Languages, name: "Language", path: "/language" }, { icon: Settings2, name: "Social Credential", path: "/social-credential" }] },
+  { label: "SETTINGS", items: [{ icon: Settings2, name: "Global Settings", path: "/globalsettings" }, { icon: Languages, name: "Language", path: "/language" }, { icon: Search, name: "SEO", path: "/seo" }, { icon: Settings2, name: "Social Credential", path: "/social-credential" }] },
 ];
 
 export default function Sidebar({ activePage, setActivePage, collapsed, setCollapsed }) {
@@ -35,12 +38,12 @@ export default function Sidebar({ activePage, setActivePage, collapsed, setColla
       {/* Logo */}
       <div className={`flex items-center h-20 px-4 gap-3 border-b border-white/5 ${collapsed ? "justify-between" : ""}`}>
         <div
-          className={`overflow-hidden transition-all duration-300 ${collapsed ? "w-[42px] h-14" : "w-[150px] h-12"}`}
+          className={`overflow-hidden transition-all duration-300 ${collapsed ? "w-[50px] h-16" : "w-[150px] h-12"}`}
         >
           <img
-            src="https://res.cloudinary.com/dcc7qgxmb/image/upload/v1776687674/logo_white_p86nub.png"
+            src={collapsed ? logoCompact : logoFull}
             alt="Career Map"
-            className={`h-full max-w-none transition-all duration-300 ${collapsed ? "w-[150px] object-cover object-[-1px_center]" : "w-full object-contain object-left"}`}
+            className={`h-full transition-all duration-300 ${collapsed ? "w-full object-contain" : "w-full object-contain object-left"}`}
           />
         </div>
 

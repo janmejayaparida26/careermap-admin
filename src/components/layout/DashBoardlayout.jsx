@@ -30,6 +30,7 @@ const pageNameMap = {
   "/notifications": "Notifications",
   "/globalsettings": "Global Settings",
   "/language": "Language",
+  "/seo": "SEO",
   "/social-credential": "Social Credential",
 };
 
