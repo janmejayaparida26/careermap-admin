@@ -22,7 +22,8 @@ icons["redo"] = `
   </svg>
 `;
 
-export default function NotificationToUser() {
+// ✅ Accepts user prop from index.jsx when coming from UserDetails
+export default function NotificationToUser({ user = null }) {
   const [subject, setSubject] = useState("");
 
   const { quill, quillRef } = useQuill({
@@ -48,8 +49,6 @@ export default function NotificationToUser() {
           },
         },
       },
-
-      // 👉 Enable history (required)
       history: {
         delay: 1000,
         maxStack: 50,
@@ -59,19 +58,39 @@ export default function NotificationToUser() {
   });
 
   const handleSend = () => {
-    const message = quill?.root.innerHTML;
-    console.log({ subject, message });
+    const messageContent = quill?.root.innerHTML;
+    console.log({
+      userId: user?.id,
+      userEmail: user?.email,
+      subject,
+      message: messageContent,
+    });
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 ">
-      
+    <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
+
+      {/* ✅ Recipient badge — only shown when a specific user is targeted */}
+      {user && (
+        <div className="flex items-center gap-3 mb-5 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="w-9 h-9 rounded-full bg-[#9a2119] text-white flex items-center justify-center font-semibold text-sm flex-shrink-0">
+            {user.user?.charAt(0)}
+          </div>
+          <div>
+            <p className="font-medium text-sm">{user.user}</p>
+            <p className="text-xs text-gray-400">{user.email}</p>
+          </div>
+          <span className="ml-auto text-xs bg-[#9a2119] text-white px-2 py-0.5 rounded">
+            {user.id}
+          </span>
+        </div>
+      )}
+
       {/* SUBJECT */}
       <div className="mb-5">
         <label className="block text-sm font-semibold mb-2 text-[#9a2119]">
           Subject <span className="text-red-500">*</span>
         </label>
-
         <Input
           placeholder="Email subject"
           value={subject}
@@ -85,7 +104,6 @@ export default function NotificationToUser() {
         <label className="block text-sm font-semibold mb-2 text-[#9a2119]">
           Message
         </label>
-
         <div className="border rounded-md overflow-hidden">
           <div ref={quillRef} style={{ height: "200px" }} />
         </div>
@@ -97,7 +115,7 @@ export default function NotificationToUser() {
           onClick={handleSend}
           className="px-6 h-10 rounded-md bg-[#9a2119] text-white hover:bg-[#c0392b] border-none"
         >
-          Send Notification
+          {user ? `Send to ${user.user}` : "Send Notification"}
         </Button>
       </div>
     </div>

@@ -19,69 +19,13 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const navSections = [
-  {
-    label: "MAIN",
-    items: [{ icon: LayoutDashboard, name: "Dashboard", path: "/dashboard" }]
-  },
-  {
-    label: "USERS",
-    items: [
-      { icon: GraduationCap, name: "Mentors", path: "/mentor" },
-      { icon: Users, name: "All Users", path: "/all_users" }
-    ]
-  },
-  {
-    label: "CONTENT",
-    items: [
-      { icon: BookOpen, name: "Modules", path: "/modules" },
-      { icon: Layers, name: "Stream", path: "/stream" },
-      { icon: Tag, name: "Categories", path: "/categories" },
-      { icon: Tags, name: "2nd Categories", path: "/2ndcategories" },
-      { icon: Tags, name: "Subcategories", path: "/subcategories" }
-    ]
-  },
-  {
-    label: "CAREER",
-    items: [
-      { icon: DollarSign, name: "Salary Range", path: "/salary" },
-      { icon: Briefcase, name: "Job Scope", path: "/jobscope" },
-      { icon: GitBranch, name: "Path Type", path: "/pathtype" },
-      { icon: MapPin, name: "Career Path", path: "/careerpath" },
-      { icon: ClipboardList, name: "Entrance Exam", path: "/entranceexam" },
-      { icon: Building2, name: "Institution", path: "/institution" },
-      { icon: Award, name: "Scholarship", path: "/scholarship" }
-    ]
-  },
-  {
-    label: "REPORT",
-    items: [
-      { icon: IndianRupeeIcon, name: "Transactions", path: "/transactions" },
-      { icon: LogInIcon, name: "Login Activities", path: "/loginactivities" },
-      { icon: BellIcon, name: "Notifications", path: "/notifications" }
-    ]
-  },
-  {
-    label: "GENERAL SETTINGS",
-    items: [
-      { icon: GlobeIcon, name: "Global Settings" },
-      { icon: GalleryVerticalIcon, name: "Logo & Favicon" },
-      { icon: LanguagesIcon, name: "Languages" },
-
-      {
-        icon: BellIcon,
-        name: "Email & Notification",
-        children: [
-          { name: "All Templates", path: "/email/templates" },
-          { name: "Global Template", path: "/email/global" },
-          { name: "Email Config", path: "/email/config" },
-          { name: "SMS Config", path: "/sms/config" },
-        ]
-      },
-
-      { icon: UsersIcon, name: "Social Credentials" },
-      { icon: ProjectorIcon, name: "SEO" }
-    ]
-  }
+  { label: "MAIN",       items: [{ icon: LayoutDashboard, name: "Dashboard",path:"/dashboard" }] },
+  { label: "USERS",      items: [{ icon: GraduationCap, name: "Mentors", path:"/mentor" }, { icon: Users, name: "All Users", path:"/all_users" }] },
+  { label: "CONTENT",    items: [{ icon: BookOpen, name: "Modules", path:"/modules" }, { icon: Layers, name: "Stream", path:"/stream" }, { icon: Tag, name: "Categories", path:"/categories" }, { icon: Tags, name: "2nd Categories", path:"/2ndcategories" }, { icon: Tags, name: "Subcategories", path:"/subcategories" }] },
+  { label: "CAREER",     items: [{ icon: DollarSign, name: "Salary Range", path:"/salary" }, { icon: Briefcase, name: "Job Scope", path:"/jobscope" }, { icon: GitBranch, name: "Path Type", path:"/pathtype" }, { icon: MapPin, name: "Career Path", path:"/careerpath" }, { icon: ClipboardList, name: "Entrance Exam", path:"/entranceexam" }, { icon: Building2, name: "Institution", path:"/institution" }, { icon: Video, name: "Master Class" }, { icon: Award, name: "Scholarship", path:"/scholarship" }] },
+  { label: "MANAGEMENT", items: [{ icon: Image, name: "Banner Slider" }, { icon: MapPin, name: "Career Plan", path:"/careerplan" }, { icon: Bell, name: "Subscribers" }, { icon: CalendarCheck, name: "Bookings", path:"/bookings" }, { icon: CreditCard, name: "Plans", path:"/plans" }, { icon: HelpCircle, name: "Quiz" }, { icon: Repeat, name: "Subscriptions" }, { icon: Wrench, name: "Services", path:"/services" }] },
+  { label: "COUNTRIES", items: [{ icon: Globe2, name: "All Countries", path:"/allcountries"}, { icon: MapPin, name: "States", path:"/states"}, {icon: MapPin, name: "Districts", path:"/districts"}]},
+  { label: "REPORT", items: [{ icon: IndianRupeeIcon, name: "Transactions", path:"/transactions"}, { icon: LogInIcon, name: "Login Activities", path:"/loginactivities"}, { icon: BellIcon, name: "Notifications", path:"/notifications"}]}
 ];
 
 export default function Sidebar({

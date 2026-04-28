@@ -1,34 +1,74 @@
-import { Bell, Search, Settings, ChevronDown, Sparkles } from "lucide-react";
+import { Bell, Search, Settings, ChevronDown, LogOut } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { getCurrentUser, logoutUser } from "../../features/auth/authStorage";
 
 export default function Header({ activePage }) {
+  const navigate = useNavigate();
+  const currentUser = getCurrentUser();
+
+  const handleLogout = () => {
+    logoutUser();
+    navigate("/login", { replace: true });
+  };
+
   return (
-    <header className="h-16 flex items-center justify-between px-6 border-b border-white/5 bg-[#ffffff] backdrop-blur-md sticky top-0 z-30">
+    <header className="sticky top-0 z-30 flex h-16 items-center justify-between bg-white px-6 shadow-sm">
+
+      {/* LEFT */}
       <div>
-        <h1 className="text-black font-display font-bold text-lg tracking-tight">{activePage}</h1>
-        <p className="text-slate-600 text-[11px] mt-0.5 tracking-wide">Overview & Analytics</p>
+        <h1 className="text-lg font-bold tracking-tight text-[#9a2119]">
+          {activePage}
+        </h1>
+        <p className="mt-0.5 text-[11px] tracking-wide text-black">
+          Overview & Analytics
+        </p>
       </div>
-      <div className="flex items-center gap-3">
-        <div className="relative hidden md:flex items-center">
-          <Search size={13} className="absolute left-3 text-slate-600" />
-          <input type="text" placeholder="Search anything…"
-            className="w-52 pl-8 pr-4 py-2 text-xs bg-white/5 border border-white/8 rounded-xl text-slate-300 placeholder-slate-600 focus:outline-none focus:border-teal-500/40 transition-all" />
-          <kbd className="absolute right-3 text-[10px] text-slate-600 bg-white/5 px-1.5 py-0.5 rounded font-mono">⌘K</kbd>
+
+      {/* RIGHT */}
+      <div className="flex items-center gap-4">
+
+        {/* SEARCH */}
+        <div className="relative hidden items-center md:flex">
+          <Search size={10} className="absolute left-3 text-[#9a2119]" />
+          <input
+            type="text"
+            placeholder="Search anything..."
+            className="w-50 rounded-lg border border-[#9a2119] py-1 pl-9 pr-3 text-sm text-black placeholder-black/70 focus:outline-none"
+          />
+         
         </div>
-        <button className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-teal-500/20 to-cyan-500/20 border border-teal-500/20 text-teal-300 text-xs font-medium hover:border-teal-400/40 transition-all">
-          <Sparkles size={11} /> AI Insights
+
+        {/* NOTIFICATION */}
+        <button className="relative flex h-9 w-9 items-center justify-center text-[#9a2119] transition hover:scale-110">
+          <Bell size={18} />
+          <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-[#9a2119]" />
         </button>
-        <button className="relative w-8 h-8 rounded-xl flex items-center justify-center bg-white/5 border border-white/8 text-slate-400 hover:text-teal-300 transition-all">
-          <Bell size={14} />
-          <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-teal-400 shadow-[0_0_6px_rgba(45,212,191,0.8)]" />
+
+        {/* SETTINGS */}
+        <button className="flex h-9 w-9 items-center justify-center text-[#9a2119] transition hover:scale-110">
+          <Settings size={18} />
         </button>
-        <button className="w-8 h-8 rounded-xl flex items-center justify-center bg-white/5 border border-white/8 text-slate-400 hover:text-teal-300 transition-all">
-          <Settings size={14} />
+
+        {/* LOGOUT */}
+        <button
+          onClick={handleLogout}
+          className="hidden items-center gap-2 text-sm font-semibold text-[#9a2119] transition hover:underline md:flex"
+        >
+          <LogOut size={16} />
+          Logout
         </button>
-        <button className="flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-xl bg-white/5 border border-white/8 hover:border-teal-500/30 transition-all">
-          <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-teal-400 to-cyan-600 flex items-center justify-center text-white font-bold text-xs">A</div>
-          <span className="text-slate-300 text-xs font-medium">Admin</span>
-          <ChevronDown size={11} className="text-slate-500" />
+
+        {/* USER / ADMIN */}
+        <button className="flex items-center gap-2 px-2 py-1 rounded-lg transition hover:scale-105">
+          <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#9a2119] text-xs font-bold text-white">
+            {currentUser?.name?.charAt(0)?.toUpperCase() || "A"}
+          </div>
+          <span className="text-sm font-semibold text-[#9a2119]">
+            {currentUser?.name || "Admin"}
+          </span>
+          <ChevronDown size={14} className="text-[#9a2119]" />
         </button>
+
       </div>
     </header>
   );
