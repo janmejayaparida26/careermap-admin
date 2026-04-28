@@ -32,6 +32,15 @@ import EntranceExamPage from "../features/entranceexam/EntranceExamPage";
 import InstitutionPage from "../features/institution/InstitutionPage";
 import ScholarshipPage from "../features/scholarship/ScholarshipPage";
 import CareerPlanPage from "../features/careerplan/CareerPlanPage";
+import BookingTable from "../features/bookings/BookingTable";
+import PlansPage from "../features/plans/PlansPage";
+import ServicesPage from "../features/services/ServicesPage";
+import CountriesPage from "../features/allcountries/CountriesPage";
+import StatesPage from "../features/states/StatesPage";
+import DistrictsPage from "../features/districts/DistrictsPage";
+import TransactionsPage from "../features/transactions/TransactionsPage";
+import LoginActivitiesPage from "../features/loginactivities/LoginActivitiesPage";
+import NotificationsPage from "../features/notifications/NotificationsPage";
 
 export const router = createBrowserRouter([
   {
@@ -98,7 +107,16 @@ export const router = createBrowserRouter([
       {path:"entranceexam",element:<EntranceExamPage/>},
       {path:"institution",element:<InstitutionPage/>},
       {path:"scholarship",element:<ScholarshipPage/>},
-      {path:"careerplan",element:<CareerPlanPage/>}
+      {path:"careerplan",element:<CareerPlanPage/>},
+      {path:"bookings",element:<BookingTable/>},
+      {path:"plans",element:<PlansPage/>},
+      {path:"services",element:<ServicesPage/>},
+      {path:"allcountries",element:<CountriesPage/>},
+      {path:"states",element:<StatesPage/>},
+      {path:"districts",element:<DistrictsPage/>},
+      {path:"transactions",element:<TransactionsPage/>},
+      {path:"loginactivities",element:<LoginActivitiesPage/>},
+      {path:"notifications",element:<NotificationsPage/>}
     ],
   },
 ]);
