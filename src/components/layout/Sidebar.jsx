@@ -8,6 +8,8 @@ import {
   IndianRupeeIcon,
   LogInIcon,
   BellIcon,
+  Languages,
+  Settings2,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -21,6 +23,7 @@ const navSections = [
   { label: "REPORT", items: [{ icon: IndianRupeeIcon, name: "Transactions", path: "/transactions" }, { icon: LogInIcon, name: "Login Activities", path: "/loginactivities" }, { icon: BellIcon, name: "Notifications", path: "/notifications" }] },
   { label: "ORDERS", items: [{ icon: ListChecks, name: "All Orders", path: "/all_orders" }] },
   { label: "SUPPORT", items: [{ icon: MessageSquare, name: "Support Tickets", path: "/support_tickets" }] },
+  { label: "SETTINGS", items: [{ icon: Settings2, name: "Global Settings", path: "/globalsettings" }, { icon: Languages, name: "Language", path: "/language" }] },
 ];
 
 export default function Sidebar({ activePage, setActivePage, collapsed, setCollapsed }) {

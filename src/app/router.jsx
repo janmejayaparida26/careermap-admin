@@ -49,6 +49,9 @@ import DistrictsPage from "../features/districts/DistrictsPage";
 import TransactionsPage from "../features/transactions/TransactionsPage";
 import LoginActivitiesPage from "../features/loginactivities/LoginActivitiesPage";
 import NotificationsPage from "../features/notifications/NotificationsPage";
+import GlobalSettingsPage from "../features/globalsettings/GlobalSettingsPage";
+import LanguagePage from "../features/language/LanguagePage";
+import LanguageKeywordsPage from "../features/language/LanguageKeywordsPage";
 
 export const router = createBrowserRouter([
   {
@@ -114,6 +117,9 @@ export const router = createBrowserRouter([
           { path: "subcategories", element: <SubCategoryPage /> },
           { path: "salary", element: <SalaryPage /> },
           { path: "jobscope", element: <JobScopePage /> },
+          { path: "globalsettings", element: <GlobalSettingsPage /> },
+          { path: "language", element: <LanguagePage /> },
+          { path: "language/:languageId/keywords", element: <LanguageKeywordsPage /> },
         ],
       },
       { index: true, element: <Navigate to="/dashboard" /> },
@@ -143,7 +149,10 @@ export const router = createBrowserRouter([
       {path:"districts",element:<DistrictsPage/>},
       {path:"transactions",element:<TransactionsPage/>},
       {path:"loginactivities",element:<LoginActivitiesPage/>},
-      {path:"notifications",element:<NotificationsPage/>}
+      {path:"notifications",element:<NotificationsPage/>},
+      {path:"globalsettings",element:<GlobalSettingsPage/>},
+      {path:"language",element:<LanguagePage/>},
+      {path:"language/:languageId/keywords",element:<LanguageKeywordsPage/>}
     ],
   },
 ]);

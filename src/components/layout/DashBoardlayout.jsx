@@ -13,6 +13,7 @@ const pageNameMap = {
   "/subcategories": "Subcategories",
   "/salary": "Salary Range",
   "/jobscope": "Job Scope",
+  "/globalsettings": "Global Settings",
 };
 
 function getActivePage(pathname) {
@@ -30,6 +31,10 @@ function getActivePage(pathname) {
 
   if (pathname.startsWith("/support_tickets")) {
     return "Support Tickets";
+  }
+
+  if (pathname.startsWith("/language")) {
+    return "Language";
   }
 
   return pageNameMap[pathname] || "Dashboard";
