@@ -50,6 +50,7 @@ import TransactionsPage from "../features/transactions/TransactionsPage";
 import LoginActivitiesPage from "../features/loginactivities/LoginActivitiesPage";
 import NotificationsPage from "../features/notifications/NotificationsPage";
 import LogoFavicon from "../features/logo&favicon/LogoFavicon";
+import AllTemplatesPage from "../features/email&notification/alltemplates/AllTemplatesPage";
 
 export const router = createBrowserRouter([
   {
@@ -145,7 +146,8 @@ export const router = createBrowserRouter([
       {path:"transactions",element:<TransactionsPage/>},
       {path:"loginactivities",element:<LoginActivitiesPage/>},
       {path:"notifications",element:<NotificationsPage/>},
-      {path:"logo&favicon",element:<LogoFavicon/>}
+      {path:"logo&favicon",element:<LogoFavicon/>},
+      {path:"email&notification/alltemplates",element:<AllTemplatesPage/>}
     ],
   },
 ]);
