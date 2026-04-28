@@ -52,6 +52,7 @@ import NotificationsPage from "../features/notifications/NotificationsPage";
 import LogoFavicon from "../features/logo&favicon/LogoFavicon";
 import AllTemplatesPage from "../features/email&notification/alltemplates/AllTemplatesPage";
 import GlobalTemplatePage from "../features/email&notification/globaltemplates/GlobalTemplatePage";
+import EmailConfigPage from "../features/email&notification/emailconfig/EmailConfigPage";
 
 export const router = createBrowserRouter([
   {
@@ -149,7 +150,8 @@ export const router = createBrowserRouter([
       {path:"notifications",element:<NotificationsPage/>},
       {path:"logo&favicon",element:<LogoFavicon/>},
       {path:"email&notification/alltemplates",element:<AllTemplatesPage/>},
-      {path:"email&notification/globaltemplates",element:<GlobalTemplatePage/>}
+      {path:"email&notification/globaltemplates",element:<GlobalTemplatePage/>},
+      {path:"email&notification/emailconfig",element:<EmailConfigPage/>}
     ],
   },
 ]);
