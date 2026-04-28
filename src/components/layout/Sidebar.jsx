@@ -72,7 +72,7 @@ const navSections = [
         name: "Email & Notification",
         children: [
           { name: "All Templates", path: "/email&notification/alltemplates" },
-          { name: "Global Template", path: "/email/global" },
+          { name: "Global Template", path: "/email&notification/globaltemplates" },
           { name: "Email Config", path: "/email/config" },
           { name: "SMS Config", path: "/sms/config" },
         ]
