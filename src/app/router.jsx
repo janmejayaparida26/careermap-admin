@@ -12,7 +12,6 @@ import Subscribers from "../features/allUser/tabs/Subscribers";
 import WithBalance from "../features/allUser/tabs/WithBalance";
 import NotificationToUser from "../features/allUser/tabs/NotificationToUser";
 import UserDetails from "../features/allUser/tabs/UserDetails";
-
 import ModulePage from "../features/modules/ModulePage";
 import StreamPage from "../features/stream/StreamPage";
 import CategoryPage from "../features/categories/CategoryPage";
@@ -32,6 +31,15 @@ import EntranceExamPage from "../features/entranceexam/EntranceExamPage";
 import InstitutionPage from "../features/institution/InstitutionPage";
 import ScholarshipPage from "../features/scholarship/ScholarshipPage";
 import CareerPlanPage from "../features/careerplan/CareerPlanPage";
+import AllOrder from "../features/AllOrders/AllOrder";
+import ApprovedOrder from "../features/allOrders/ApprovedOrder";
+import PendingOrder from "../features/allOrders/PendngOrder";
+import SupportTickets from "../features/supportTickets/SupportTickets";
+import AllTickets from "../features/supportTickets/AllTickets";
+import PendingTickets from "../features/supportTickets/PendingTickets";
+import ClosedTickets from "../features/supportTickets/ClosedTickets";
+import AnsweredTickets from "../features/supportTickets/AnsweredTickets";
+import TicketDetails from "../features/supportTickets/TicketDetails";
 import BookingTable from "../features/bookings/BookingTable";
 import PlansPage from "../features/plans/PlansPage";
 import ServicesPage from "../features/services/ServicesPage";
@@ -80,6 +88,25 @@ export const router = createBrowserRouter([
               { path: "notification", element: <NotificationToUser /> },
             ],
           },
+          {path:"all_orders", element:<AllOrder/>,
+            children:[
+              { index: true, element: <Navigate to="/all_orders/approved" replace /> },
+              { path: "approved", element: <ApprovedOrder /> },
+              { path: "pending", element: <PendingOrder /> },
+            ] 
+          },
+          {
+            path: "support_tickets",
+            element: <SupportTickets />,
+            children: [
+              { index: true, element: <Navigate to="/support_tickets/all" replace /> },
+              { path: "all", element: <AllTickets /> },
+              { path: "pending", element: <PendingTickets /> },
+              { path: "closed", element: <ClosedTickets /> },
+              { path: "answered", element: <AnsweredTickets /> },
+            ],
+          },
+          { path: "support_tickets/:ticketId", element: <TicketDetails /> },
           { path: "modules", element: <ModulePage /> },
           { path: "stream", element: <StreamPage /> },
           { path: "categories", element: <CategoryPage /> },
@@ -93,7 +120,7 @@ export const router = createBrowserRouter([
       { path: "dashboard", element: <DashboardPage /> },
       { path: "mentor", element: <MentorPage /> },
       { path: "all_users", element: <AllUsers /> },
-      { path: "dashboard", element: <DashboardPage /> }, // ✅ no need for "/"
+      { path: "dashboard", element: <DashboardPage /> },
       {path:"mentor",element:<MentorPage/>},
       {path:"modules",element:<ModulePage/>},
       {path:"stream",element:<StreamPage/>},
