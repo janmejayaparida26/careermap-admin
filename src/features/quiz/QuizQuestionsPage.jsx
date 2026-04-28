@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Button, Form, Input, Modal, Popconfirm, Select, Table, message } from "antd";
+import { Form, Input, Modal, Popconfirm, Select, Table, message } from "antd";
 import {
   ArrowLeftOutlined,
   DeleteOutlined,
@@ -61,16 +61,11 @@ export default function QuizQuestionsPage() {
       correctOption: values.correctOption,
     };
 
-    const nextQuizzes = quizzes.map((item) => {
-      if (item.id !== quizId) {
-        return item;
-      }
-
-      return {
-        ...item,
-        questions: [...item.questions, nextQuestion],
-      };
-    });
+    const nextQuizzes = quizzes.map((item) =>
+      item.id === quizId
+        ? { ...item, questions: [...item.questions, nextQuestion] }
+        : item
+    );
 
     persistQuizzes(nextQuizzes);
     message.success("Question added successfully.");
@@ -95,7 +90,6 @@ export default function QuizQuestionsPage() {
     }
 
     const values = await editForm.validateFields();
-
     const nextQuestion = {
       id: editingQuestion.id,
       question: values.question,
@@ -130,7 +124,6 @@ export default function QuizQuestionsPage() {
     );
 
     persistQuizzes(nextQuizzes);
-
     message.success("Question deleted successfully.");
   };
 
@@ -141,14 +134,13 @@ export default function QuizQuestionsPage() {
         <p className="mt-2 text-sm text-slate-500">
           The selected quiz could not be found.
         </p>
-        <Button
-          type="primary"
-          icon={<ArrowLeftOutlined />}
+        <button
           onClick={() => navigate("/quiz")}
-          className="app-btn-primary mt-5 border-none"
+          className="mt-5 rounded-xl bg-[#9a2119] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#b62b21]"
         >
+          <ArrowLeftOutlined className="mr-2" />
           Back to Quiz
-        </Button>
+        </button>
       </div>
     );
   }
@@ -200,11 +192,11 @@ export default function QuizQuestionsPage() {
       title: <span className="text-[#9a2119] font-semibold">Action</span>,
       align: "right",
       render: (_, record) => (
-        <div className="flex justify-end gap-2">
+        <div className="flex justify-end gap-3">
           <button
             type="button"
             onClick={() => handleEdit(record)}
-            className="app-icon-btn"
+            className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#d7d7d7] bg-white text-[#222] transition hover:border-[#9a2119] hover:text-[#9a2119]"
             title="Edit question"
           >
             <EditOutlined />
@@ -218,7 +210,7 @@ export default function QuizQuestionsPage() {
           >
             <button
               type="button"
-              className="app-icon-btn-danger"
+              className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#ff4d4f] bg-white text-[#ff4d4f] transition hover:bg-[#fff1f0]"
               title="Delete question"
             >
               <DeleteOutlined />
@@ -232,15 +224,10 @@ export default function QuizQuestionsPage() {
   return (
     <section className="space-y-5">
       <div className="flex items-center gap-3">
-        <Button
-          icon={<ArrowLeftOutlined />}
-          onClick={() => navigate("/quiz")}
-          className="app-btn-secondary"
-        >
-          Back
-        </Button>
+      
         <div>
-          <h2 className="text-xl font-bold text-[#9a2119]">Add Question for the Quiz</h2>
+          <h2 className="text-xl font-bold text-[#9a2119]"> <ArrowLeftOutlined className="mr-2"  onClick={() => navigate("/quiz")}/>
+      Add Question for the Quiz</h2>
           <p className="text-sm text-slate-500">{quiz.title}</p>
         </div>
       </div>
@@ -307,22 +294,21 @@ export default function QuizQuestionsPage() {
           </Form.Item>
         </Form>
 
-        <div className="app-toolbar">
-          <Button
-            type="primary"
-            icon={<PlusOutlined />}
+        <div className="flex flex-wrap items-center gap-3">
+          <button
             onClick={handleSubmit}
-            className="app-btn-primary border-none"
+            className="rounded-xl bg-[#9a2119] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#b62b21]"
           >
-            Submit
-          </Button>
-          <Button
-            icon={<ReloadOutlined />}
+            <PlusOutlined className="mr-2" />
+            Add Question
+          </button>
+          <button
             onClick={resetForm}
-            className="app-btn-secondary"
+            className="rounded-xl border border-[#d7d7d7] bg-white px-5 py-2.5 text-sm font-semibold text-[#222] transition hover:border-[#9a2119] hover:text-[#9a2119]"
           >
+            <ReloadOutlined className="mr-2" />
             Reset
-          </Button>
+          </button>
         </div>
       </div>
 
@@ -345,10 +331,22 @@ export default function QuizQuestionsPage() {
         title={<span className="text-[#9a2119] font-semibold">Edit Question</span>}
         open={Boolean(editingQuestion)}
         onCancel={closeEditModal}
-        onOk={handleUpdate}
-        okText="Update"
-        cancelText="Cancel"
-        okButtonProps={{ className: "!bg-[#9a2119] !border-[#9a2119] hover:!bg-[#c4392e]" }}
+        footer={[
+          <button
+            key="cancel"
+            onClick={closeEditModal}
+            className="rounded-xl border border-[#d7d7d7] bg-white px-5 py-2 text-sm font-semibold text-[#222] transition hover:border-[#9a2119] hover:text-[#9a2119]"
+          >
+            Cancel
+          </button>,
+          <button
+            key="update"
+            onClick={handleUpdate}
+            className="rounded-xl bg-[#9a2119] px-5 py-2 text-sm font-semibold text-white transition hover:bg-[#b62b21]"
+          >
+            Update
+          </button>,
+        ]}
       >
         <Form form={editForm} layout="vertical" className="mt-4">
           <Form.Item

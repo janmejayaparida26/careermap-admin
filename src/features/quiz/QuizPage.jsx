@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Button, Form, Input, message, Modal, Popconfirm, Select, Table } from "antd";
+import { Form, Input, message, Modal, Popconfirm, Select, Table } from "antd";
 import {
   DeleteOutlined,
   EditOutlined,
@@ -43,7 +43,6 @@ export default function QuizPage() {
 
   const handleSubmit = async () => {
     const values = await form.validateFields();
-
     const nextQuizId = createQuizId();
     const nextQuiz = {
       key: nextQuizId,
@@ -58,7 +57,6 @@ export default function QuizPage() {
 
     persistQuizzes([...quizzes, nextQuiz]);
     message.success("Quiz added successfully.");
-
     resetForm();
   };
 
@@ -79,7 +77,6 @@ export default function QuizPage() {
     }
 
     const values = await editForm.validateFields();
-
     const nextQuizzes = quizzes.map((quiz) =>
       quiz.id === editingQuiz.id ? { ...quiz, ...values } : quiz
     );
@@ -92,7 +89,6 @@ export default function QuizPage() {
   const handleDelete = (quizId) => {
     const nextQuizzes = quizzes.filter((quiz) => quiz.id !== quizId);
     persistQuizzes(nextQuizzes);
-
     message.success("Quiz deleted successfully.");
   };
 
@@ -116,13 +112,12 @@ export default function QuizPage() {
     {
       title: <span className="text-[#9a2119] font-semibold">Add</span>,
       render: (_, record) => (
-        <Button
-          type="primary"
+        <button
           onClick={() => navigate(`/quiz/${record.id}/questions`)}
-          className="app-btn-primary border-none"
+          className="rounded-xl bg-[#9a2119] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#b62b21]"
         >
           Add Question
-        </Button>
+        </button>
       ),
     },
     {
@@ -133,11 +128,11 @@ export default function QuizPage() {
       title: <span className="text-[#9a2119] font-semibold">Action</span>,
       align: "right",
       render: (_, record) => (
-        <div className="flex justify-end gap-2">
+        <div className="flex justify-end gap-3">
           <button
             type="button"
             onClick={() => handleEdit(record)}
-            className="app-icon-btn"
+            className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#d7d7d7] bg-white text-[#222] transition hover:border-[#9a2119] hover:text-[#9a2119]"
             title="Edit quiz"
           >
             <EditOutlined />
@@ -149,7 +144,11 @@ export default function QuizPage() {
             cancelText="Cancel"
             onConfirm={() => handleDelete(record.id)}
           >
-            <button type="button" className="app-icon-btn-danger" title="Delete quiz">
+            <button
+              type="button"
+              className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#ff4d4f] bg-white text-[#ff4d4f] transition hover:bg-[#fff1f0]"
+              title="Delete quiz"
+            >
               <DeleteOutlined />
             </button>
           </Popconfirm>
@@ -163,11 +162,8 @@ export default function QuizPage() {
       <h2 className="text-xl font-bold text-[#9a2119]">Quiz Management</h2>
 
       <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
-        <div className="mb-5 flex items-center justify-between">
+        <div className="mb-5">
           <h3 className="text-lg font-semibold text-[#9a2119]">Add Quiz</h3>
-          <div className="rounded-full bg-[#fdf2f1] px-4 py-2 text-sm font-semibold text-[#9a2119]">
-            Total Quiz: {quizCount}
-          </div>
         </div>
 
         <Form
@@ -222,28 +218,30 @@ export default function QuizPage() {
           </Form.Item>
         </Form>
 
-        <div className="app-toolbar mb-2">
-          <Button
-            type="primary"
-            icon={<PlusOutlined />}
+        <div className="flex flex-wrap items-center gap-3">
+          <button
             onClick={handleSubmit}
-            className="app-btn-primary border-none"
+            className="rounded-xl bg-[#9a2119] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#b62b21]"
           >
-            Save Quiz
-          </Button>
-          <Button
-            icon={<ReloadOutlined />}
+            <PlusOutlined className="mr-2" />
+            Add Quiz
+          </button>
+          <button
             onClick={resetForm}
-            className="app-btn-secondary"
+            className="rounded-xl border border-[#d7d7d7] bg-white px-5 py-2.5 text-sm font-semibold text-[#222] transition hover:border-[#9a2119] hover:text-[#9a2119]"
           >
+            <ReloadOutlined className="mr-2" />
             Reset
-          </Button>
+          </button>
         </div>
       </div>
 
       <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
-        <div className="mb-4">
+        <div className="mb-4 flex items-center justify-between">
           <h3 className="text-lg font-semibold text-[#9a2119]">Quiz List</h3>
+          <div className="rounded-full bg-[#fdf2f1] px-4 py-2 text-sm font-semibold text-[#9a2119]">
+            Total Quiz: {quizCount}
+          </div>
         </div>
 
         <Table
@@ -260,10 +258,22 @@ export default function QuizPage() {
         title={<span className="text-[#9a2119] font-semibold">Edit Quiz</span>}
         open={Boolean(editingQuiz)}
         onCancel={closeEditModal}
-        onOk={handleUpdate}
-        okText="Update"
-        cancelText="Cancel"
-        okButtonProps={{ className: "!bg-[#9a2119] !border-[#9a2119] hover:!bg-[#c4392e]" }}
+        footer={[
+          <button
+            key="cancel"
+            onClick={closeEditModal}
+            className="rounded-xl border border-[#d7d7d7] bg-white px-5 py-2 text-sm font-semibold text-[#222] transition hover:border-[#9a2119] hover:text-[#9a2119]"
+          >
+            Cancel
+          </button>,
+          <button
+            key="update"
+            onClick={handleUpdate}
+            className="rounded-xl bg-[#9a2119] px-5 py-2 text-sm font-semibold text-white transition hover:bg-[#b62b21]"
+          >
+            Update
+          </button>,
+        ]}
       >
         <Form form={editForm} layout="vertical" className="mt-4">
           <Form.Item
