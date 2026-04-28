@@ -49,6 +49,7 @@ import DistrictsPage from "../features/districts/DistrictsPage";
 import TransactionsPage from "../features/transactions/TransactionsPage";
 import LoginActivitiesPage from "../features/loginactivities/LoginActivitiesPage";
 import NotificationsPage from "../features/notifications/NotificationsPage";
+import LogoFavicon from "../features/logo&favicon/LogoFavicon";
 
 export const router = createBrowserRouter([
   {
@@ -143,7 +144,8 @@ export const router = createBrowserRouter([
       {path:"districts",element:<DistrictsPage/>},
       {path:"transactions",element:<TransactionsPage/>},
       {path:"loginactivities",element:<LoginActivitiesPage/>},
-      {path:"notifications",element:<NotificationsPage/>}
+      {path:"notifications",element:<NotificationsPage/>},
+      {path:"logo&favicon",element:<LogoFavicon/>}
     ],
   },
 ]);
