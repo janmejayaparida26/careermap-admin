@@ -49,6 +49,11 @@ import DistrictsPage from "../features/districts/DistrictsPage";
 import TransactionsPage from "../features/transactions/TransactionsPage";
 import LoginActivitiesPage from "../features/loginactivities/LoginActivitiesPage";
 import NotificationsPage from "../features/notifications/NotificationsPage";
+import LogoFavicon from "../features/logo&favicon/LogoFavicon";
+import AllTemplatesPage from "../features/email&notification/alltemplates/AllTemplatesPage";
+import GlobalTemplatePage from "../features/email&notification/globaltemplates/GlobalTemplatePage";
+import EmailConfigPage from "../features/email&notification/emailconfig/EmailConfigPage";
+import SmsConfigPage from "../features/email&notification/smsconfig/SmsConfigPage";
 import JobPage from "../features/jobs/JobPage";
 import JobFormPage from "../features/jobs/JobFormPage";
 import JobApplicationsPage from "../features/jobs/JobApplicationsPage";
@@ -152,6 +157,39 @@ export const router = createBrowserRouter([
           { path: "social-credential", element: <SocialCredentialPage /> },
         ],
       },
+      { index: true, element: <Navigate to="/dashboard" /> },
+      { path: "dashboard", element: <DashboardPage /> },
+      { path: "mentor", element: <MentorPage /> },
+      { path: "all_users", element: <AllUsers /> },
+      { path: "dashboard", element: <DashboardPage /> },
+      {path:"mentor",element:<MentorPage/>},
+      {path:"modules",element:<ModulePage/>},
+      {path:"stream",element:<StreamPage/>},
+      {path:"categories",element:<CategoryPage/>},
+      {path:"2ndcategories",element:<Category2Page/>},
+      {path:"subcategories",element:<SubCategoryPage/>},
+      {path:"salary",element:<SalaryPage/>},
+      {path:"jobscope",element:<JobScopePage/>},
+      {path:"pathtype",element:<PathTypePage/>},
+      {path:"careerpath",element:<CareerPathPage/>},
+      {path:"entranceexam",element:<EntranceExamPage/>},
+      {path:"institution",element:<InstitutionPage/>},
+      {path:"scholarship",element:<ScholarshipPage/>},
+      {path:"careerplan",element:<CareerPlanPage/>},
+      {path:"bookings",element:<BookingTable/>},
+      {path:"plans",element:<PlansPage/>},
+      {path:"services",element:<ServicesPage/>},
+      {path:"allcountries",element:<CountriesPage/>},
+      {path:"states",element:<StatesPage/>},
+      {path:"districts",element:<DistrictsPage/>},
+      {path:"transactions",element:<TransactionsPage/>},
+      {path:"loginactivities",element:<LoginActivitiesPage/>},
+      {path:"notifications",element:<NotificationsPage/>},
+      {path:"logo&favicon",element:<LogoFavicon/>},
+      {path:"email&notification/alltemplates",element:<AllTemplatesPage/>},
+      {path:"email&notification/globaltemplates",element:<GlobalTemplatePage/>},
+      {path:"email&notification/emailconfig",element:<EmailConfigPage/>},
+      {path:"email&notification/smsconfig",element:<SmsConfigPage/>}
     ],
   },
 ]);
