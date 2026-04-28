@@ -1,9 +1,15 @@
+import { notification } from "antd";
 import {
   LayoutDashboard, Users, GraduationCap, BookOpen, Layers,
   Tag, Tags, DollarSign, Briefcase, GitBranch, MapPin,
   ClipboardList, Building2, Video, Award, Image, CreditCard,
   Bell, CalendarCheck, ListChecks, HelpCircle, Repeat, Wrench,
   ChevronLeft, ChevronRight, MessageSquare,
+  ChevronLeft, ChevronRight,
+  Globe2,
+  IndianRupeeIcon,
+  LogInIcon,
+  BellIcon,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 const navSections = [
@@ -11,6 +17,9 @@ const navSections = [
   { label: "USERS",      items: [{ icon: GraduationCap, name: "Mentors", path:"/mentor" }, { icon: Users, name: "All Users", path:"/all_users" }] },
   { label: "CONTENT",    items: [{ icon: BookOpen, name: "Modules", path:"/modules" }, { icon: Layers, name: "Stream", path:"/stream" }, { icon: Tag, name: "Categories", path:"/categories" }, { icon: Tags, name: "2nd Categories", path:"/2ndcategories" }, { icon: Tags, name: "Subcategories", path:"/subcategories" }] },
   { label: "CAREER",     items: [{ icon: DollarSign, name: "Salary Range", path:"/salary" }, { icon: Briefcase, name: "Job Scope", path:"/jobscope" }, { icon: GitBranch, name: "Path Type", path:"/pathtype" }, { icon: MapPin, name: "Career Path", path:"/careerpath" }, { icon: ClipboardList, name: "Entrance Exam", path:"/entranceexam" }, { icon: Building2, name: "Institution", path:"/institution" }, { icon: Video, name: "Master Class" }, { icon: Award, name: "Scholarship", path:"/scholarship" }] },
+  { label: "MANAGEMENT", items: [{ icon: Image, name: "Banner Slider" }, { icon: MapPin, name: "Career Plan", path:"/careerplan" }, { icon: Bell, name: "Subscribers" }, { icon: CalendarCheck, name: "Bookings", path:"/bookings" }, { icon: CreditCard, name: "Plans", path:"/plans" }, { icon: HelpCircle, name: "Quiz" }, { icon: Repeat, name: "Subscriptions" }, { icon: Wrench, name: "Services", path:"/services" }] },
+  { label: "COUNTRIES", items: [{ icon: Globe2, name: "All Countries", path:"/allcountries"}, { icon: MapPin, name: "States", path:"/states"}, {icon: MapPin, name: "Districts", path:"/districts"}]},
+  { label: "REPORT", items: [{ icon: IndianRupeeIcon, name: "Transactions", path:"/transactions"}, { icon: LogInIcon, name: "Login Activities", path:"/loginactivities"}, { icon: BellIcon, name: "Notifications", path:"/notifications"}]}
   { label: "MANAGEMENT", items: [{ icon: Image, name: "Banner Slider" }, { icon: MapPin, name: "Career Plan", path:"/careerplan" }, { icon: Bell, name: "Subscribers" }, { icon: CalendarCheck, name: "Bookings" }, { icon: CreditCard, name: "Plans" }, { icon: HelpCircle, name: "Quiz" }, { icon: Repeat, name: "Subscriptions" }, { icon: Wrench, name: "Services" }] },
   { label: "USERS",      items: [{ icon: GraduationCap, name: "Mentors", path:"/mentor" }, { icon: Users, name: "All Users" }] },
   { label: "CONTENT",    items: [{ icon: BookOpen, name: "Modules", path:"/module" }, { icon: Layers, name: "Stream", path:"/stream" }, { icon: Tag, name: "Categories", path:"/categories" }, { icon: Tags, name: "2nd Categories", path:"/2ndcategories" }, { icon: Tags, name: "Subcategories", path:"/subcategories" }] },
