@@ -25,6 +25,7 @@ import AuthLayout from "../features/auth/AuthLayout";
 import LoginPage from "../features/auth/LoginPage";
 import SignupPage from "../features/auth/SignupPage";
 import ForgotPasswordPage from "../features/auth/ForgotPasswordPage";
+import RootRedirect from "../features/auth/RootRedirect";
 import PathTypePage from "../features/pathtype/PathTypePage";
 import CareerPathPage from "../features/careerpath/CareerPathPage";
 import EntranceExamPage from "../features/entranceexam/EntranceExamPage";
@@ -67,15 +68,17 @@ import SocialCredentialPage from "../features/socialcredential/SocialCredentialP
 
 export const router = createBrowserRouter([
   {
+    path: "/",
+    element: <RootRedirect />,
+  },
+  {
     element: <PublicOnlyRoute />,
     children: [
       {
         element: <AuthLayout />,
         children: [
-          { index: true, element: <Navigate to="/login" replace /> },
           { path: "/login", element: <LoginPage /> },
-          { path: "/signup", element: <SignupPage /> },
-          { path: "/forgot-password", element: <ForgotPasswordPage /> },
+             { path: "/forgot-password", element: <ForgotPasswordPage /> },
         ],
       },
     ],
