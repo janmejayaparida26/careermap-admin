@@ -12,6 +12,7 @@ import {
   CreditCard,
   DollarSign,
   FileText,
+  GalleryVerticalIcon,
   GitBranch,
   Globe2,
   GraduationCap,
@@ -117,6 +118,7 @@ const navSections = [
     label: "SETTINGS",
     items: [
       { icon: Settings2, name: "Global Settings", path: "/globalsettings" },
+      { icon: GalleryVerticalIcon, name: "Logo & Favicon", path: "/logo&favicon"},
       { icon: Languages, name: "Language", path: "/language" },
       { icon: Search, name: "SEO", path: "/seo" },
       { icon: Settings2, name: "Social Credential", path: "/social-credential" },
