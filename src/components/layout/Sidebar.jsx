@@ -14,6 +14,7 @@ import {
   CreditCard,
   DollarSign,
   FileText,
+  FolderTree,
   GalleryVerticalIcon,
   GitBranch,
   Globe2,
@@ -58,8 +59,8 @@ const navSections = [
       { icon: BookOpen, name: "Modules", path: "/modules" },
       { icon: Layers, name: "Stream", path: "/stream" },
       { icon: Tag, name: "Categories", path: "/categories" },
-      { icon: Tags, name: "2nd Categories", path: "/2ndcategories" },
-      { icon: Tags, name: "Subcategories", path: "/subcategories" },
+      { icon: Layers, name: "Second Categories", path: "/2ndcategories" },
+      { icon: FolderTree, name: "Subcategories", path: "/subcategories" },
     ],
   },
   {
