@@ -6,8 +6,10 @@ import {
   Briefcase,
   Building2,
   CalendarCheck,
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
+  ChevronUp,
   ClipboardList,
   CreditCard,
   DollarSign,
@@ -33,6 +35,7 @@ import {
   Users,
   Wrench,
 } from "lucide-react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logoFull from "../../assets/logo_white.png";
 import logoCompact from "../../assets/logo_white_small.png";
@@ -118,16 +121,32 @@ const navSections = [
     label: "SETTINGS",
     items: [
       { icon: Settings2, name: "Global Settings", path: "/globalsettings" },
-      { icon: GalleryVerticalIcon, name: "Logo & Favicon", path: "/logo&favicon"},
+      { icon: GalleryVerticalIcon, name: "Logo & Favicon", path: "/logo&favicon" },
       { icon: Languages, name: "Language", path: "/language" },
-      { icon: Search, name: "SEO", path: "/seo" },
+      {
+        icon: BellIcon,
+        name: "Email & Notification",
+        children: [
+          { name: "All Templates", path: "/email&notification/alltemplates" },
+          { name: "Global Template", path: "/email&notification/globaltemplates" },
+          { name: "Email Config", path: "/email&notification/emailconfig" },
+          { name: "SMS Config", path: "/email&notification/smsconfig" },
+        ],
+      },
       { icon: Settings2, name: "Social Credential", path: "/social-credential" },
+      { icon: Search, name: "SEO", path: "/seo" },
     ],
   },
 ];
 
 export default function Sidebar({ activePage, setActivePage, collapsed, setCollapsed }) {
   const navigate = useNavigate();
+  // Track which accordion items are open by their name
+  const [openAccordions, setOpenAccordions] = useState({ "Email & Notification": true });
+
+  const toggleAccordion = (name) => {
+    setOpenAccordions((prev) => ({ ...prev, [name]: !prev[name] }));
+  };
 
   return (
     <aside
@@ -136,6 +155,7 @@ export default function Sidebar({ activePage, setActivePage, collapsed, setColla
       }`}
       style={{ background: "#fff", borderRight: "1px solid #eee" }}
     >
+      {/* Logo */}
       <div
         className={`flex h-20 items-center gap-3 border-b px-4 ${
           collapsed ? "justify-between" : ""
@@ -163,6 +183,7 @@ export default function Sidebar({ activePage, setActivePage, collapsed, setColla
         </button>
       </div>
 
+      {/* Nav */}
       <nav className="scrollbar-hide flex-1 overflow-y-auto py-4">
         {navSections.map((section) => (
           <div key={section.label} className="mb-3">
@@ -175,7 +196,78 @@ export default function Sidebar({ activePage, setActivePage, collapsed, setColla
             {section.items.map((item) => {
               const Icon = item.icon;
               const isActive = activePage === item.name;
+              const hasChildren = item.children && item.children.length > 0;
+              const isOpen = openAccordions[item.name];
 
+              // Item has children → render accordion
+              if (hasChildren) {
+                return (
+                  <div key={item.name}>
+                    {/* Accordion trigger */}
+                    <button
+                      onClick={() => {
+                        if (!collapsed) toggleAccordion(item.name);
+                        setActivePage(item.name);
+                      }}
+                      className={`flex w-full items-center gap-3 px-4 py-2 text-sm transition ${
+                        isActive || isOpen
+                          ? "bg-[#eef2ff] text-[#9a2119]"
+                          : "text-gray-600 hover:text-[#9a2119]"
+                      }`}
+                    >
+                      <span className="flex h-6 w-6 items-center justify-center">
+                        <Icon size={15} />
+                      </span>
+                      {!collapsed && (
+                        <>
+                          <span className="flex-1 text-left">{item.name}</span>
+                          <span className="ml-auto">
+                            {isOpen ? (
+                              <ChevronUp size={13} />
+                            ) : (
+                              <ChevronDown size={13} />
+                            )}
+                          </span>
+                        </>
+                      )}
+                    </button>
+
+                    {/* Children */}
+                    {!collapsed && isOpen && (
+                      <div className="ml-4 border-l border-gray-200 pl-3">
+                        {item.children.map((child) => {
+                          const isChildActive = activePage === child.name;
+                          return (
+                            <button
+                              key={child.name}
+                              onClick={() => {
+                                setActivePage(child.name);
+                                if (child.path) navigate(child.path);
+                              }}
+                              className={`flex w-full items-center gap-2 px-3 py-[7px] text-sm transition ${
+                                isChildActive
+                                  ? "text-[#9a2119] font-medium"
+                                  : "text-gray-500 hover:text-[#9a2119]"
+                              }`}
+                            >
+                              {/* Small chevron bullet matching the image */}
+                              <ChevronRight
+                                size={12}
+                                className={
+                                  isChildActive ? "text-[#9a2119]" : "text-gray-400"
+                                }
+                              />
+                              <span>{child.name}</span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+
+              // Normal item
               return (
                 <button
                   key={item.name}
@@ -200,6 +292,7 @@ export default function Sidebar({ activePage, setActivePage, collapsed, setColla
         ))}
       </nav>
 
+      {/* Footer */}
       {!collapsed && (
         <div className="border-t p-4">
           <div className="flex items-center gap-3">
