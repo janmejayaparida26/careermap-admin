@@ -121,18 +121,18 @@ const navSections = [
     label: "SETTINGS",
     items: [
       { icon: Settings2, name: "Global Settings", path: "/globalsettings" },
-      { icon: GalleryVerticalIcon, name: "Logo & Favicon", path: "/logo&favicon" },
+      { icon: GalleryVerticalIcon, name: "Logo & Favicon", path: "/logo-favicon" },
       { icon: Languages, name: "Language", path: "/language" },
-      {
-        icon: BellIcon,
-        name: "Email & Notification",
-        children: [
-          { name: "All Templates", path: "/email&notification/alltemplates" },
-          { name: "Global Template", path: "/email&notification/globaltemplates" },
-          { name: "Email Config", path: "/email&notification/emailconfig" },
-          { name: "SMS Config", path: "/email&notification/smsconfig" },
-        ],
-      },
+     {
+  icon: BellIcon,
+  name: "Email & Notification",
+  children: [
+    { name: "All Templates", path: "/email-notification/alltemplates" },
+    { name: "Global Template", path: "/email-notification/globaltemplates" },
+    { name: "Email Config", path: "/email-notification/emailconfig" },
+    { name: "SMS Config", path: "/email-notification/smsconfig" },
+  ],
+},
       { icon: Settings2, name: "Social Credential", path: "/social-credential" },
       { icon: Search, name: "SEO", path: "/seo" },
     ],
