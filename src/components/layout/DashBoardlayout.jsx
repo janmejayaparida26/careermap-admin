@@ -28,6 +28,11 @@ const pageNameMap = {
   "/transactions": "Transactions",
   "/loginactivities": "Login Activities",
   "/notifications": "Notifications",
+  "/logo-favicon": "Logo & Favicon",
+  "/email-notification/alltemplates": "All Templates",
+  "/email-notification/globaltemplates": "Global Template",
+  "/email-notification/emailconfig": "Email Config",
+  "/email-notification/smsconfig": "SMS Config",
   "/jobs": "Job",
   "/job-applications": "Job Application",
   "/quiz": "Quiz",
@@ -52,6 +57,10 @@ function getActivePage(pathname) {
 
   if (pathname.startsWith("/support_tickets")) {
     return "Support Tickets";
+  }
+
+  if (pathname.startsWith("/email-notification")) {
+    return pageNameMap[pathname] || "Email & Notification";
   }
 
   if (pathname.startsWith("/language")) {

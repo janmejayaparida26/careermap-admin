@@ -25,6 +25,7 @@ import AuthLayout from "../features/auth/AuthLayout";
 import LoginPage from "../features/auth/LoginPage";
 import SignupPage from "../features/auth/SignupPage";
 import ForgotPasswordPage from "../features/auth/ForgotPasswordPage";
+import RootRedirect from "../features/auth/RootRedirect";
 import PathTypePage from "../features/pathtype/PathTypePage";
 import CareerPathPage from "../features/careerpath/CareerPathPage";
 import EntranceExamPage from "../features/entranceexam/EntranceExamPage";
@@ -67,14 +68,17 @@ import SocialCredentialPage from "../features/socialcredential/SocialCredentialP
 
 export const router = createBrowserRouter([
   {
+    path: "/",
+    element: <RootRedirect />,
+  },
+  {
     element: <PublicOnlyRoute />,
     children: [
       {
         element: <AuthLayout />,
         children: [
           { path: "/login", element: <LoginPage /> },
-          { path: "/signup", element: <SignupPage /> },
-          { path: "/forgot-password", element: <ForgotPasswordPage /> },
+             { path: "/forgot-password", element: <ForgotPasswordPage /> },
         ],
       },
     ],
@@ -144,6 +148,11 @@ export const router = createBrowserRouter([
           { path: "transactions", element: <TransactionsPage /> },
           { path: "loginactivities", element: <LoginActivitiesPage /> },
           { path: "notifications", element: <NotificationsPage /> },
+          { path: "logo-favicon", element: <LogoFavicon /> },
+          { path: "email-notification/alltemplates", element: <AllTemplatesPage /> },
+          { path: "email-notification/globaltemplates", element: <GlobalTemplatePage /> },
+          { path: "email-notification/emailconfig", element: <EmailConfigPage /> },
+          { path: "email-notification/smsconfig", element: <SmsConfigPage /> },
           { path: "jobs", element: <JobPage /> },
           { path: "jobs/add", element: <JobFormPage mode="add" /> },
           { path: "jobs/:jobId/edit", element: <JobFormPage mode="edit" /> },
@@ -157,39 +166,6 @@ export const router = createBrowserRouter([
           { path: "social-credential", element: <SocialCredentialPage /> },
         ],
       },
-      { index: true, element: <Navigate to="/dashboard" /> },
-      { path: "dashboard", element: <DashboardPage /> },
-      { path: "mentor", element: <MentorPage /> },
-      { path: "all_users", element: <AllUsers /> },
-      { path: "dashboard", element: <DashboardPage /> },
-      {path:"mentor",element:<MentorPage/>},
-      {path:"modules",element:<ModulePage/>},
-      {path:"stream",element:<StreamPage/>},
-      {path:"categories",element:<CategoryPage/>},
-      {path:"2ndcategories",element:<Category2Page/>},
-      {path:"subcategories",element:<SubCategoryPage/>},
-      {path:"salary",element:<SalaryPage/>},
-      {path:"jobscope",element:<JobScopePage/>},
-      {path:"pathtype",element:<PathTypePage/>},
-      {path:"careerpath",element:<CareerPathPage/>},
-      {path:"entranceexam",element:<EntranceExamPage/>},
-      {path:"institution",element:<InstitutionPage/>},
-      {path:"scholarship",element:<ScholarshipPage/>},
-      {path:"careerplan",element:<CareerPlanPage/>},
-      {path:"bookings",element:<BookingTable/>},
-      {path:"plans",element:<PlansPage/>},
-      {path:"services",element:<ServicesPage/>},
-      {path:"allcountries",element:<CountriesPage/>},
-      {path:"states",element:<StatesPage/>},
-      {path:"districts",element:<DistrictsPage/>},
-      {path:"transactions",element:<TransactionsPage/>},
-      {path:"loginactivities",element:<LoginActivitiesPage/>},
-      {path:"notifications",element:<NotificationsPage/>},
-      {path:"logo&favicon",element:<LogoFavicon/>},
-      {path:"email&notification/alltemplates",element:<AllTemplatesPage/>},
-      {path:"email&notification/globaltemplates",element:<GlobalTemplatePage/>},
-      {path:"email&notification/emailconfig",element:<EmailConfigPage/>},
-      {path:"email&notification/smsconfig",element:<SmsConfigPage/>}
     ],
   },
 ]);
